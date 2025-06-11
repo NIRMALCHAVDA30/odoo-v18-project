@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_stock_picking_form_custom" model="ir.ui.view">
+        <field name="name">stock.picking.form.inventory.admin.button</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="get_inventory_admin_users"
+                        type="object"
+                        string="Get Inventory Admin Users"
+                        class="btn-primary"/>
+
+                    <button name="find_user_with_access_to_both_inventory_and_accounting"
+                        type="object"
+                        string="Inventory and Accounting Users"
+                        class="btn-danger"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

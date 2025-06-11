@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <record id="mail_activity_view_activity_a" model="ir.ui.view">
+        <field name="name">mail.activity.view.activity.a</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <button name="hello"
+                        type="object"
+                        string="Activity"
+                        class="btn-danger"/>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_view_inherit_owner" model="ir.ui.view">
+        <field name="name">res.partner.view.inherit.owner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="pump_owner" invisible="is_owner == True"/>
+                <field name="is_owner" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

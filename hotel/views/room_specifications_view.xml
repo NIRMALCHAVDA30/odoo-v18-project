@@ -1,0 +1,40 @@
+<odoo>
+    <record id="room_specifications_view_form" model="ir.ui.view">
+        <field name="name">room.specifications.view.form</field>
+        <field name="model">room.specifications</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="room_specifications_view_list" model="ir.ui.view">
+        <field name="name">room.specifications.view.list</field>
+        <field name="model">room.specifications</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="description" />
+            </list>
+        </field>
+    </record>
+
+    <record id="room_specifications_action" model="ir.actions.act_window">
+        <field name="name">Room Specifications</field>
+        <field name="res_model">room.specifications</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="room_specifications_menu"
+        name="Room Specifications"
+        action="room_specifications_action"
+        sequence="1" /> -->
+
+</odoo>

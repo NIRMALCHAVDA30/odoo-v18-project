@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="courier_tracking_view_form" model="ir.ui.view">
+        <field name="name">courier.tracking.view.form</field>
+        <field name="model">courier.tracking</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_pickup"
+                        string="Pick up"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status in ['picked','in_transit','delivered','out_for_delivery']"
+                        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent"/>
+
+                    <button name="action_in_transit"
+                        string="In Transit"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status in ['in_transit','delivered','out_for_delivery','invoiced']"
+                        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent"/>
+
+                    <button name="action_out_for_delivery"
+                        string="Out For Delivery"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status in ['picked','delivered','out_for_delivery','invoiced']"
+                        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent"/>
+
+                    <button name="action_delivered"
+                        string="Delivered"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status in ['picked','in_transit','delivered','invoiced']"
+                        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent"/>
+
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Picked" invisible="status != 'picked'" />
+                    <widget name="web_ribbon" title="In Transit" invisible="status != 'in_transit'" />
+                    <widget name="web_ribbon" title="Out For Delivery" invisible="status != 'out_for_delivery'" />
+                    <widget name="web_ribbon" title="Delivered" invisible="status != 'delivered'"/>
+                    <group>
+                        <group>
+                            <field name="booking_id" readonly="1"/>
+                            <field name="timestamp" readonly="1"/>
+                            <field name="notes" readonly="status in ['delivered']"/>
+                        </group>
+                        <group>
+                            <field name="tracking_number" readonly="1"/>
+                            <field name="agent" readonly="1"/>
+                        </group>
+
+                        <group string="Sender Details">
+                            <field name="sender_id" readonly="status not in ['draft']" widget="many2one_avatar_user"/>
+                            <span class="o_form_label o_td_label o_address_type" name="address_name">
+                                <span>Pickup Address</span>
+                            </span>
+
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..."
+                                    class="o_address_street" readonly="status not in ['draft']"/>
+                                <field name="street2" placeholder="Street 2..."
+                                    class="o_address_street" readonly="status not in ['draft']"/>
+                                <field name="city" placeholder="City" class="o_address_city" readonly="status not in ['draft']"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" readonly="status not in ['draft']"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" readonly="status not in ['draft']"/>
+                                <div name="partner_address_country"
+                                    class="d-flex justify-content-between">
+                                    <field name="country_id" placeholder="Country"
+                                        class="o_address_country" readonly="status not in ['draft']"/>
+                                </div>
+                            </div>
+
+                            <field name="sender_phone" widget="phone" readonly="status not in ['draft']"/>
+                            <field name="sender_email" widget="email" readonly="status not in ['draft']"/>
+                        </group>
+
+                        <group string="Receiver Details">
+                            <field name="receiver_id" widget="many2one_avatar_user"/>
+
+                            <span class="o_form_label o_td_label o_address_type" name="address_name">
+                                <span>Delivery Address</span>
+                            </span>
+
+                            <div class="o_address_format">
+                                <field name="receiver_street" placeholder="Street..."
+                                    class="o_address_street" readonly="status not in ['draft']"/>
+                                <field name="receiver_street2" placeholder="Street 2..."
+                                    class="o_address_street" readonly="status not in ['draft']"/>
+                                <field name="receiver_city" placeholder="City"
+                                    class="o_address_city" readonly="status not in ['draft']"/>
+                                <field name="receiver_state_id" class="o_address_state"
+                                    placeholder="State" readonly="status not in ['draft']"/>
+                                <field name="receiver_zip" placeholder="ZIP" class="o_address_zip" readonly="status not in ['draft']"/>
+                                <div name="partner_address_country"
+                                    class="d-flex justify-content-between">
+                                    <field name="receiver_country_id" placeholder="Country"
+                                        class="o_address_country" readonly="status not in ['draft']"/>
+                                </div>
+                            </div>
+
+                            <field name="receiver_phone" widget="phone" />
+                            <field name="receiver_email" widget="email" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="courier_tracking_view_list" model="ir.ui.view">
+        <field name="name">courier.tracking.view.list</field>
+        <field name="model">courier.tracking</field>
+        <field name="arch" type="xml">
+            <list create="0">
+                <field name="booking_id" decoration-bf="1"/>
+                <field name="timestamp" />
+                <field name="tracking_number" />
+                <field name="agent" />
+                <field name="status" 
+                    decoration-primary="status == 'invoiced'"
+                    decoration-success="status == 'delivered'"
+                    widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="courier_tracking_action" model="ir.actions.act_window">
+        <field name="name">Courier Tracking</field>
+        <field name="res_model">courier.tracking</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="courier_tracking_menu"
+        name="Courier Tracking"
+        action="courier_tracking_action"
+        sequence="3" /> -->
+
+</odoo>

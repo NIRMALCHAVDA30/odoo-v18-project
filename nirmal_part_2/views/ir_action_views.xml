@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Task 10 -->
+    <record id="ir_action_views_limit" model="ir.ui.view">
+        <field name="name">ir.action.views.limit</field>
+        <field name="model">ir.actions.act_window</field>
+        <field name="inherit_id" ref="base.view_window_action_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='limit']" position="replace">
+                <field name="limit" default="80"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,109 @@
+<odoo>
+    <record id="hotel_view_form" model="ir.ui.view">
+        <field name="name">hotel.view.form</field>
+        <field name="model">hotel</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_show_available_rooms" string="Show Available Rooms"
+                        type="object" class="btn-primary" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <h1>
+                                <field name="name" readonly="1" />
+                            </h1>
+                            <field name="location" readonly="1" />
+                            <field name="landmark" readonly="1" />
+
+                            <field name="amenities_ids" widget="many2many_checkboxes" readonly="1" />
+                            <field name="rating" widget="priority" />
+                        </group>
+                        <group>
+                            <field name="hotel_image" widget="image" options="{'size': [500, 300]}"
+                                readonly="1" string="" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <!-- <page string=" Rooms">
+                            <field name="room_ids" readonly="1"/>
+                        </page> -->
+                        <page string="Service">
+                            <field name="service_ids" readonly="1" />
+                        </page>
+                        <page string="Policy">
+                            <field name="policy_ids" readonly="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_view_list" model="ir.ui.view">
+        <field name="name">hotel.view.list</field>
+        <field name="model">hotel</field>
+        <field name="arch" type="xml">
+            <list create="0">
+                <field name="name" />
+                <field name="location" />
+                <field name="landmark" />
+                <field name="rating" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hotel_view_kanban" model="ir.ui.view">
+        <field name="name">hotel.view.kanban</field>
+        <field name="model">hotel</field>
+        <field name="arch" type="xml">
+            <kanban create="0" default_group_by="location" records_draggable="0"
+                groups_draggable="0">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <div>
+                                <!-- <span>
+                                    <strong>Hotel Name : </strong>
+                                </span> -->
+                                <h1 style="padding-left:80px;">
+                                    <field name="name" />
+                                </h1>
+                            </div>
+                            <field name="hotel_image" widget="image" readonly="0" />
+
+                            <div>
+                                <div style="padding-left:120px;">
+                                    <strong>Rating</strong>
+                                </div>
+                                <h2 style="padding-left:100px;"> 
+                                    <field name="rating" widget="priority" />
+                                </h2>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hotel_action" model="ir.actions.act_window">
+        <field name="name">Hotel</field>
+        <field name="res_model">hotel</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'kanban', 'view_id': ref('hotel_view_kanban')}),
+                        (0, 0, {'view_mode': 'list', 'view_id': ref('hotel_view_list')}),
+                        (0, 0, {'view_mode': 'form', 'view_id': ref('hotel_view_form')})]" />
+        <!-- <field name="view_mode">kanban,list,form</field> -->
+
+    </record>
+
+    <!-- <menuitem
+        id="hotel_menu"
+        name="Hotel"
+        action="hotel_action"
+        sequence="1" /> -->
+
+</odoo>

@@ -1,0 +1,145 @@
+<odoo>
+    <record id="room_hotel_wizard_view_form" model="ir.ui.view">
+        <field name="name">room.hotel.wizard.view.form</field>
+        <field name="model">room</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_open_booking"
+                        type="object"
+                        string="Book Now"
+                        invisible="not is_room_added"
+                        class="btn-primary" />
+
+                    <button name="action_add_to_booking"
+                        type="object"
+                        string="Add Room"
+                        invisible="is_room_added"
+                        class="btn btn-primary"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="hotel_id" readonly="1" />
+                            <field name="room_number" readonly="1" />
+                            <field name="floor" readonly="1" />
+                            <field name="status" readonly="1" />
+                            <field name="room_type_id" readonly="1" />
+                            <field name="capacity" />
+                            <field name="price_per_night" readonly="1" />
+                            <!-- <field name="is_booked" /> -->
+                        </group>
+
+                        <group>
+                            <field name="room_image" widget="image" readonly="1" string="" />
+                        </group>
+
+                        <notebook>
+                            <page string="Room Policy">
+                                <field name="policy_ids" readonly="1" />
+                            </page>
+                            <page string=" Room Specification">
+                                <field name="room_specification_ids" readonly="1" />
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="room_hotel_wizard_view_list" model="ir.ui.view">
+        <field name="name">room.hotel.wizard.view.list</field>
+        <field name="model">room</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="hotel_id" />
+                <field name="room_number" />
+                <field name="floor" />
+                <field name="status" />
+                <field name="room_type_id" />
+                <field name="price_per_night" />
+            </list>
+        </field>
+    </record>
+
+    <record id="room_hotel_wizard_view_kanban" model="ir.ui.view">
+        <field name="name">room.hotel.wizard.view.kanban</field>
+        <field name="model">room</field>
+        <field name="arch" type="xml">
+            <kanban create="0" default_group_by="room_type_id" records_draggable="0"
+                groups_draggable="0">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <field name="room_image" widget="image" />
+                            <div>
+                                <span>
+                                    <strong>Hotel : </strong>
+                                </span>
+                                <field name="hotel_id" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Room Number : </strong>
+                                </span>
+                                <field name="room_number" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Room Type : </strong>
+                                </span>
+                                <field name="room_type_id" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Price Per Night : </strong>
+                                </span>
+                                <field name="price_per_night" />
+                            </div>
+                            <div style=" margin-top:8px; padding-left:90px;">
+                                <span>
+                                    <button name="action_open_booking"
+                                        type="object"
+                                        invisible="not is_room_added"
+                                        string="Book Now"
+                                        class="btn-primary" />
+                                        
+                                </span>
+                                <span>
+                                
+                                    <button name="action_add_to_booking"
+                                        type="object"
+                                        invisible="is_room_added"
+                                        string="Add Room"
+                                        class="btn btn-primary" />
+                                        
+                                </span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="room_hotel_wizard_action" model="ir.actions.act_window">
+        <field name="name">Room Hotel Wizard</field>
+        <field name="res_model">room</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'kanban', 'view_id': ref('room_hotel_wizard_view_kanban')}),
+                        (0, 0, {'view_mode': 'list', 'view_id': ref('room_hotel_wizard_view_list')}),
+                        (0, 0, {'view_mode': 'form', 'view_id': ref('room_hotel_wizard_view_form')})]" />
+        <!-- <field name="view_mode">kanban,list,form</field> -->
+
+    </record>
+
+    <!-- <menuitem
+        id="room_menu"
+        name="Room"
+        action="room_action"
+        sequence="1" /> -->
+
+</odoo>

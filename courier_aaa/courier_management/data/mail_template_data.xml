@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="mail_template_courier_management_booking_id" model="mail.template">
+            <field name="name">Courier Details</field>
+            <field name="model_id" ref="courier_management.model_courier_booking"/>
+            <field name="email_from">{{ user.email }}</field>
+            <field name="email_to">{{object.sender_id.email}}</field>
+            <field name="subject">Courier Details</field>
+            <field name="body_html" type="html">
+                  <div class="d-flex justify-content-between align-items-start shadow-sm p-3 mb-3 bg-white rounded">
+                <div style="margin: 0px; padding: 0px;">
+                      <h2>
+                            Hello,
+                            <t t-out="object.sender_id"/>
+                        </h2>
+                        <br/>
+                        <div>
+                            <h3>
+                            
+                            </h3>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    Regards,
+                    <br/>
+                    <t t-out="object.company_id.name"/><br/>
+                    <t t-out="object.responsible_user.name" />
+                    <br/>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

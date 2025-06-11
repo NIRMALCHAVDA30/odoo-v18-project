@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="courier_customer_complaint_wizard_form_view" model="ir.ui.view">
+        <field name="name">Customer Complaint</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id"  invisible="1" />
+                            <field name="booking_id" domain="[('sender_id', '=', partner_id)]"      options="{'no_create': True, 'no_open': True}" open="0" create="0" edit="0" />
+                            <field name="complaint_category" widget="radio" options="{'horizontal': true}" />
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="attachment" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_complaint_create" string="Raise Complaint" type="object" class="btn btn-primary" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="courier_customer_complaint_wizard_action" model="ir.actions.act_window">
+        <field name="name">New Customer Complaint</field>
+        <field name="res_model">customer.complaint</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="courier_customer_complaint_wizard_form_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

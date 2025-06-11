@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="book_room_wizard_view_form" model="ir.ui.view">
+        <field name="name">book.room.wizard.view.form</field>
+        <field name="model">book.room.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="room_id" />
+                    <field name="guest_id" />
+                    <field name="check_in_date" />
+                    <field name="check_out_date" />
+                </group>
+                <footer>
+                    <button name="action_button_book_room" string="Book Room" type="object" class="oe_highlight"/>
+                    
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="book_room_wizard_action" model="ir.actions.act_window">
+        <field name="name">Book Room Wizard</field>
+        <field name="res_model">book.room.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- <menuitem
+        id="book_room_wizard_menu"
+        name="Book Room Wizard"
+        action="book_room_wizard_action"
+        sequence="10" /> -->
+
+</odoo>

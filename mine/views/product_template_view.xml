@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <record id="product_template_form_inherit_never_sold" model="ir.ui.view">
+        <field name="name">product.template.never.sold.button</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_show_never_sold_products"
+                        type="object"
+                        string="Show Never Sold"
+                        class="btn-primary"/>
+
+                        
+                    <button name="products_sold_with_a_discount"
+                        type="object"
+                        string="Sold Discount"
+                        class="btn-danger"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

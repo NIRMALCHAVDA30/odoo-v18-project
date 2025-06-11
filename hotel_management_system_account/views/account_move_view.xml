@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="invoice_hotel_booking_view_form" model="ir.ui.view">
+        <field name="name">invoice.hotel.booking.view.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="hotel_id" string="Hotel Name"/>
+            </xpath>
+
+            <xpath expr="//field[@name='hotel_id']" position="after">
+                <field name="guest_id" string="Guest Name" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

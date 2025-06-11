@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_analytic_line_list_button" model="ir.ui.view">
+        <field name="name">account.analytic.line.list.button</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+
+                <button name="total_time_without_tasks"
+                    type="object"
+                    string="Time Without Tasks"
+                    class="btn-primary" />
+
+                <button name="total_number_of_hours_worked_by_an_employee"
+                    type="object"
+                    string="Total hours"
+                    class="btn-danger" />
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

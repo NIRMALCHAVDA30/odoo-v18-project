@@ -1,0 +1,25 @@
+<odoo>
+    <record id="purchase_advance_payment_form_view" model="ir.ui.view">
+        <field name="name">purchase.advance.payment.form.view</field>
+        <field name="model">purchase.advance.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="journal_id" />
+                        <field name="payment_status" />
+                    </group>
+
+                    <group>
+                        <field name="amount" />
+                    </group>
+                </group>
+                <footer>
+                    <button name="create_advance_payment" type="object"
+                        string="Create Advance Payment" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

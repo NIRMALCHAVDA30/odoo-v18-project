@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_hotel_restaurant_main"
+        name="Restaurant"
+        parent="hotel_management_system.hotel_management_menu"
+        action="action_hotel_restaurant"
+        sequence="7" />
+
+    <menuitem
+        id="menu_hotel_restraunt"
+        name="Hotel Restaurant"
+        parent="menu_hotel_restaurant_main"
+        action="action_hotel_restaurant"
+        sequence="8" />
+
+    <menuitem
+        id="restaurant_order_menu"
+        name="Order"
+        parent="menu_hotel_restaurant_main"
+        action="restaurant_order_action"
+        sequence="9" />
+
+</odoo>
+<!-- parent="menu_hotel_restaurant" -->

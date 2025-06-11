@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_view_salespeople" model="ir.ui.view">
+        <field name="name">sale.order.view.salespeople</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <button name="salespeople_this_month" type="object" class="btn-outline-primary"
+                        string="Seles Person" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

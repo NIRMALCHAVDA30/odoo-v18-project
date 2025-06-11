@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="shipping_mode_demo_data_air" model="shipping.mode">
+        <field name="name">Air</field>
+        <field name="speed_rank">fastest</field>
+    </record>
+
+    <record id="shipping_mode_demo_data_ship" model="shipping.mode">
+        <field name="name">Ship</field>
+        <field name="speed_rank">balanced</field>
+    </record>
+
+    <record id="shipping_mode_demo_data_road" model="shipping.mode">
+        <field name="name">Road</field>
+        <field name="speed_rank">cheapest</field>
+    </record>
+
+</odoo>
+
+

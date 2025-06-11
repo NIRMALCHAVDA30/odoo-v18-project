@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_move_location" model="ir.ui.view">
+        <field name="name">stock.move.location</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_source_destination_location"
+                        type="object"
+                        string="Location"
+                        class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+    
+
+</odoo>

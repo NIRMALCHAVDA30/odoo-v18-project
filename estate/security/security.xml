@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="estate_group_user" model="res.groups">
+        <field name="name">Agent</field>
+        <field name="category_id" ref="base.module_category_real_estate_brokerage" />
+    </record>
+
+    <record id="estate_group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="base.module_category_real_estate_brokerage" />
+        <field name="implied_ids" eval="[(4, ref('estate_group_user'))]" />
+    </record>
+
+    <!-- Record Rule -->
+    <record id="rule_agent_modify_properties" model="ir.rule">
+        <field name="name">Agent only see or modify properties</field>
+        <field name="model_id" ref="model_estate_property" />
+        <field name="groups" eval="[(4, ref('estate_group_user'))]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="False" />
+        <field name="domain_force">["|",
+            ('salesperson', '=', user.id),
+            ('salesperson', '=', False)]
+        </field>
+    </record>
+
+    <!-- Agent(user) -->
+    <record id="access_property_tag_user" model="ir.model.access">
+        <field name="name">Estate Property tag only read</field>
+        <field name="model_id" ref="model_estate_property_tag" />
+        <field name="group_id" ref="estate_group_user" />
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="acess_property_offer_user" model="ir.model.access">
+        <field name="name">Estate Property offer only read</field>
+        <field name="model_id" ref="model_estate_property_offer" />
+        <field name="group_id" ref="estate_group_user" />
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <!-- Manager -->
+    <record id="access_property_tag_manager" model="ir.model.access">
+        <field name="name">Estate Property tag only read</field>
+        <field name="model_id" ref="model_estate_property_tag" />
+        <field name="group_id" ref="estate_group_manager"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="acess_property_offer_manager" model="ir.model.access">
+        <field name="name">Estate Property offer only read</field>
+        <field name="model_id" ref="model_estate_property_offer" />
+        <field name="group_id" ref="estate_group_manager" />
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="rule_manager_full_access" model="ir.rule">
+        <field name="name">Managers can see and modify all properties</field>
+        <field name="model_id" ref="model_estate_property" />
+        <field name="groups" eval="[(4, ref('estate_group_manager'))]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="domain_force">[
+            (1, '=', 1)
+            ]</field>
+    </record>
+
+    <!--
+    estate.access_estate_property_manager,access_estate_property,estate.model_estate_property,estate.estate_group_manager,1,1,1,1
+    estate.access_estate_property_type_manager,access_estate_property_type,estate.model_estate_property_type,estate.estate_group_manager,1,1,1,1
+    estate.access_estate_property_tag_manager,access_estate_property_tag,estate.model_estate_property_tag,estate.estate_group_manager,1,1,1,1
+    estate.access_estate_property_offer_manager,access_estate_property_offer,estate.model_estate_property_offer,estate.estate_group_manager,1,1,1,1
+    estate.access_estate_property_user,access_estate_property,estate.model_estate_property,estate.estate_group_user,1,1,1,0
+    estate.access_estate_property_type_user,access_estate_property_type,estate.model_estate_property_type,estate.estate_group_user,1,0,0,0
+    estate.access_estate_property_tag_user,access_estate_property_tag,estate.model_estate_property_tag,estate.estate_group_user,1,0,0,0
+    estate.access_estate_property_offer_user,access_estate_property_offer,estate.model_estate_property_offer,estate.estate_group_user,1,0,0,0 -->
+</odoo>  

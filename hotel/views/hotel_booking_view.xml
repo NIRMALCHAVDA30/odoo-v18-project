@@ -1,0 +1,225 @@
+<odoo>
+    <record id="hotel_booking_view_form" model="ir.ui.view">
+        <field name="name">hotel.booking.view.form</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" />
+
+                    <button name="action_open_rooms_kanban"
+                        type="object"
+                        string="Add Room to Booking"
+                        class="btn-primary"
+                        invisible="status in ['confirmed', 'cancelled']" />
+
+                    <button name="action_confirm_booking"
+                        type="object"
+                        string="Confirm Booking"
+                        class="btn btn-success"
+                        invisible="status in ['confirmed','cancelled'] " />
+
+                    <button name="action_cancel_booking"
+                        type="object"
+                        string="Cancel Booking"
+                        class="btn btn-danger"
+                        invisible="status in ['confirmed','cancelled'] " />
+
+                    <button name="action_create_invoice"
+                        string="Create Invoice"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status in ['cancelled', 'draft']" />
+
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="guest_pic" widget="image" class="oe_avatar" />
+                        <field name="name" />
+                    </h1>
+
+                    <!-- State button  -->
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                            type="object"
+                            name="action_view_sale_order"
+                            icon="fa-pencil-square-o"
+                            invisible="not invoice_id">
+                            <div class="o_stat_info">
+                                <field name="invoice_id" class="o_stat_value" />
+                                <span class="o_stat_text">Invoice</span>
+                            </div>
+                        </button>
+                    </div>
+
+
+                    <group>
+                        <group string="Booking detail">
+                            <field name="guest_id" readonly="status == 'confirmed'"/>
+                            <field name="hotel_id" readonly="1" />
+                            <field name="room_id" invisible="1" />
+                            <field name="floor" invisible="1" />
+                            <field name="room_type" invisible="1" />
+
+
+                            <field name="check_in_date" readonly="1"/>
+                            <field name="check_out_date" readonly="1" />
+                            <field name="days"/>
+
+
+                            <field name="status" invisible="0" />
+                        </group>
+
+                        <group string="Guest Details">
+                            <field name="phone" widget="phone"/>
+                            <field name="guest_gender" widget="radio" options="{'horizontal': True}" />
+                            <field name="aadhaar_id" string="Aadhar ID"/>
+                            <field name="upload_adhar" />
+                            <field name="pan_card" />
+                        </group>
+
+                        <group string="adults &amp; childrens">
+                            <group>
+                                <field name="adults" readonly="1" />
+                                <field name="children" readonly="1" />
+                            </group>
+                            <group>
+                                <field name="total_persons" />
+                            </group>
+                        </group>
+
+                        <group string="">
+                            <field name="applied_pricelist_ids" widget="many2many_tags" invisible="1" />
+                            <field name="final_amount" style="color:red;"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Rooms">
+                            <field name="room_line_ids" readonly="1" />
+                            <h2>
+                                <group style="padding-left:1270px;">
+                                    <field name="total_price" />
+                                </group>
+                            </h2>
+                        </page>
+
+                        <page string="Members" invisible="total_persons &lt;= 1">
+                            <field name="guest_line_ids" readonly="status == 'confirmed'" />
+                        </page>
+
+                        <page string="Room Policy">
+                            <field name="policy_ids" readonly="1" />
+                        </page>
+
+                        <page string="Orders">
+                            <field name="order_ids" readonly="1"/>
+                            <h2>
+                                <group style="padding-left:1220px;">
+                                    <field name="total_order_price" />
+                                </group>
+                            </h2>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_booking_view_list" model="ir.ui.view">
+        <field name="name">hotel.booking.view.list</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="check_in_date" />
+                <field name="check_out_date" />
+                <field name="days" />
+                <field name="adults" />
+                <field name="children" />
+                <field name="total_persons" />
+                <field name="room_line_ids" />
+                <field name="status" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hotel_booking_view_kanban" model="ir.ui.view">
+        <field name="name">hotel.booking.view.kanban</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <widget name="web_ribbon" title="confirmed"
+                                invisible="status != 'confirmed'"
+                                bg_color="text-bg-danger" />
+                            <widget name="web_ribbon" title="cancelled"
+                                invisible="status != 'cancelled'" />
+
+                            <h4>
+                                <span>
+                                    <strong>Hotel Name : </strong>
+                                </span>
+                                <field name="hotel_id" />
+                            </h4>
+                            <div>
+                                <span>
+                                    <strong>Booking Id : </strong>
+                                </span>
+                                <field name="name" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Room Number : </strong>
+                                </span>
+                                <field name="room_id" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Check In Date : </strong>
+                                </span>
+                                <field name="check_in_date" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Check Out Date : </strong>
+                                </span>
+                                <field name="check_out_date" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hotel_booking_server_action" model="ir.actions.server">
+        <field name="name">Booking Status</field>
+        <field name="model_id" ref="model_hotel_booking"/>
+        <field name="binding_model_id" ref="model_hotel_booking"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.status == 'draft':
+                    record.action_cancel_booking()
+        </field>
+    </record>
+
+    <record id="hotel_booking_action" model="ir.actions.act_window">
+        <field name="name">Hotel Booking</field>
+        <field name="res_model">hotel.booking</field>
+        <field name="view_mode">kanban,list,form</field>
+
+    </record>
+
+    <!-- <menuitem
+        id="hotel_booking_menu"
+        name="Hotel Booking"
+        action="hotel_booking_action"
+        sequence="1" /> -->
+
+</odoo>

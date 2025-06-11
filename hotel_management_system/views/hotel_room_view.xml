@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_room_view_form" model="ir.ui.view">
+        <field name="name">hotel.room.view.form</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <form>
+            <header>
+                <field name="housekeeping_status" widget="statusbar" />
+            </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="room_type" />
+                            <field name="price_per_night" />
+                            <field name="state" />
+                            <field name="floor" />
+                            <field name="is_available" />
+                            <field name="hotel_id" />
+
+                            <field name="max_persons" />
+                            <field name="extra_person_charge" />
+
+                            <!-- <field name="product_id" /> -->
+                        </group>
+                        <group>
+                            <field name="room_image" widget="image" readonly="0"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="booking_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_room_view_list" model="ir.ui.view">
+        <field name="name">hotel.room.view.list</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <list decoration-success="is_available" decoration-danger="not is_available">
+                <field name="name" />
+                <field name="room_type" />
+                <field name="hotel_id" />
+                <field name="price_per_night" />
+                <field name="is_available" />
+
+            </list>
+        </field>
+    </record>
+
+    <record id="hotel_room_view_kanban" model="ir.ui.view">
+        <field name="name">hotel.room.view.kanban</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <field name="room_image" widget="image" readonly="0" />
+                            <div>
+                                <span>
+                                    <strong>Hotel : </strong>
+                                </span>
+                                <field name="hotel_id" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Room Number : </strong>
+                                </span>
+                                <field name="name" />   
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Room Type : </strong>
+                                </span>
+                                <field name="room_type" />
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Price Per Night : </strong>
+                                </span>
+                                <field name="price_per_night" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hotel_room_action" model="ir.actions.act_window">
+        <field name="name">Hotel Room</field>
+        <field name="res_model">hotel.room</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="hotel_room_menu"
+        name="Hotel Room"
+        action="hotel_room_action"
+        sequence="2" /> -->
+
+</odoo>

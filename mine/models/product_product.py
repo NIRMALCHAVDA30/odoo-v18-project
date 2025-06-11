@@ -1,0 +1,14 @@
+from odoo import models, fields, api
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    sale_count = fields.Float(store=True)
+
+    def bought_specific_product(self):
+        print("???????????????????????????????????????")
+        # sold_product = self.search([
+        #     ('sales_count', '>=', 5)
+        # ])
+        # print("\n\n\n--------->", sold_product)
+

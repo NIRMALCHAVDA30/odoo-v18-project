@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mode_wise_report_view_pivot" model="ir.ui.view">
+        <field name="name">mode.wise.report.view.pivot</field>
+        <field name="model">mode.wise.report</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="mode_id" type="row"/>
+                <field name="total_bookings" type="measure"/>
+                <field name="total_weight" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="mode_wise_report_view_graph" model="ir.ui.view">
+        <field name="name">mode.wise.report.view.graph</field>
+        <field name="model">mode.wise.report</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="mode_id" type="row"/>
+                <field name="total_bookings" type="measure"/>
+                <field name="total_weight" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="mode_wise_report_view_list" model="ir.ui.view">
+        <field name="name">mode.wise.report.view.list</field>
+        <field name="model">mode.wise.report</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="mode_id"/>
+                <field name="total_bookings"/>
+                <field name="total_weight" />
+                <field name="total_cost"/>
+            </list>
+        </field>
+    </record>
+
+
+
+    <record id="mode_wise_report_view_action" model="ir.actions.act_window">
+        <field name="name">Mode-wise delivery</field>
+        <field name="res_model">mode.wise.report</field>
+        <field name="view_mode">graph,pivot,list</field>
+    </record>
+
+    <!-- <menuitem
+        id="courier_booking_report_menu"
+        name="Mode-wise delivery"
+        action="courier_booking_report_view_action"
+        sequence="1" /> -->
+
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="shipping_route_form_view_id" model="ir.ui.view">
+        <field name="name">Shipping Route</field>
+        <field name="model">shipping.route</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group name="name" string="Route Details">
+                            <field name="name" string="Route Name" />
+                            <field name="source_city" />
+                            <field name="destination_city" />
+                            <field name="distance_km" />
+                        </group>
+                        <notebook>
+                            <page string="Price slabs">
+                                <field name="route_line_ids">
+                                    <list editable="bottom">
+                                        <field name="mode_id" />
+                                        <field name="cost_per_kg" />
+                                        <field name="estimated_days" />
+                                        <field name="is_active" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="shipping_route_list_view_id" model="ir.ui.view">
+        <field name="name">Shipping Mode</field>
+        <field name="model">shipping.route</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="source_city" />
+                <field name="destination_city" />
+                <field name="distance_km" />
+            </list>
+        </field>
+    </record>
+    <record id="shipping_route_action_id" model="ir.actions.act_window">
+        <field name="name">Shipping Route</field>
+        <field name="res_model">shipping.route</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

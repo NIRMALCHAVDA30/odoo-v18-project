@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="seq_reservation" model="ir.sequence">
+        <field name="name">reservation</field>
+        <field name="code">hotel.reservation</field>
+        <field name="prefix">R</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_housekeeping_request" model="ir.sequence">
+        <field name="name">Housekeeping Request</field>
+        <field name="code">housekeeping.request</field>
+        <field name="prefix">HR</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

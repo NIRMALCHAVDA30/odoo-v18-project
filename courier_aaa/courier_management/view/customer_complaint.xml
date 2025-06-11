@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="courier_customer_complaint_form_view_id" model="ir.ui.view">
+        <field name="name">Customer Complaint</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <field name="status" widget="statusbar"/>
+                    <header>
+                        <button name="action_set_in_progress" groups="courier_management.courier_management_manager_group" invisible="status in ('in_progress','resolved','closed')" type="object" string="In Progress" class="btn-primary"/>
+                        <button name="action_set_resolved" groups="courier_management.courier_management_manager_group" invisible="status in ('resolved','closed')" type="object" string="Resolve" class="btn-primary"/>
+                    </header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="ticket_number" readonly="1" />
+                        </h1>
+                    </div>
+                    <group string="Customer Complaint">
+                        <group>
+                            <field name="booking_id" options="{'no_open': True}" readonly="1" />
+                            <field name="complaint_category" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="priority" widget="badge" readonly="1" style="font-weight:bold;" decoration-warning="priority == 'high'" />
+                            <field name="description" readonly="1" />
+                            <field name="attachment" nolabel="1" readonly="status in ('in_progress','resolved','closed')"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Internal Notes" groups="courier_management.courier_management_manager_group">
+                            <group>
+                                <field name="assigned_to" groups="courier_management.courier_management_manager_group" />
+                                <field name="resolution_deadline" groups="courier_management.courier_management_manager_group" />
+                                <field name="internal_notes" groups="courier_management.courier_management_manager_group" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter style="font-weight:bold; font-family:tahoma;" />
+            </form>
+        </field>
+    </record>
+    <record id="courier_complaints_kanban_view_id" model="ir.ui.view">
+        <field name="name">Courier Tracking</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by='state' create="0">
+                <templates>
+                    <t t-name="card">
+                        <div class="hotel_kanban_card">
+                            <!-- <field name="kanban_state" style="float:right;" widget="project_state_selection"/> -->
+                            <main class="hotel_kanban_info">
+                                <div class="oe_title">
+                                    <h2 class="d-flex">
+                                        <field name="is_favorite" widget="boolean_favorite" nolabel="1" />
+                                        <field name="ticket_number"/>
+                                    </h2>
+
+                                </div>
+                                <group>
+                                </group>
+
+                                <hr class="my-1"/>
+                                <div class="d-flex align-items-center">
+                                    <span style="font-weight:bold;">Category: <field name="complaint_category" style="color:purple;"/>
+                                    </span>
+
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span style="font-weight:bold;">Customer:<field name="sender_id"/>
+                                    </span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span style="font-weight:bold;">Courier Id:<field name="booking_sequence"/>
+                                    </span>
+                                </div>
+                            </main>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="courier_customer_complaint_list_view_id" model="ir.ui.view">
+        <field name="name">Customer Complaint</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <list create="0" decoration-success="status == 'closed'" decoration-warning="status == 'in_progress'" decoration-muted="status == 'closed'">
+                <field name="ticket_number"/>
+                <field name="booking_id"/>
+                <field name="complaint_category"/>
+                <field name="assigned_to" groups="courier_management.courier_management_manager_group"/>
+                <field name="priority" groups="courier_management.courier_management_manager_group"/>
+                <field name="resolution_deadline"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="courier_customer_complaint_action_id" model="ir.actions.act_window">
+        <field name="name">Customer Complaint</field>
+        <field name="res_model">customer.complaint</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('courier_customer_complaint_list_view_id')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('courier_customer_complaint_form_view_id')})
+        ]"/>
+    </record>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="mail_template_courier_for_email" model="mail.template">
+            <field name="name">Courier Data: Send By Email</field>
+            <field name="model_id" ref="courier.model_courier_request"/>
+            <field name="subject">{{object.sender_name}} : Information for the courier</field>
+            <field name="email_from">{{object.sender_email}}</field>
+            <field name="email_to">{{object.receiver_email}}</field>
+            <field name="body_html" type="html">
+                <p style="color:red;">
+                    Hello <t t-out="object.sender_name"/>, How are you!
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

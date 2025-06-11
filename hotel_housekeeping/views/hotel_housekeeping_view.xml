@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_housekeeping_view_form" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.view.form</field>
+        <field name="model">hotel.housekeeping</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="cleaning_status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <h2>
+                                <field name="name" />
+                            </h2>
+                            <field name="room_id" readonly="0" />
+                            <field name="request_id" readonly="1" />
+                            <field name="description" readonly="1" />
+                            <field name="employee_id"
+                                domain="[('job_id.name', '=', 'HouseKeeping')]"
+                                readonly="cleaning_status in ['in_maintenance', 'cleaned']" />
+                            <!-- <field name="floor"/> -->
+                            <field name="service" invisible="1" />
+                            <field name="planned_start_date"
+                                readonly="cleaning_status in ['in_maintenance', 'cleaned']" />
+                            <field name="planned_end_date"
+                                readonly="cleaning_status in ['in_maintenance', 'cleaned']" />
+                            <field name="cleaning_status" readonly="1" />
+                            <field name="start_time" readonly="1" />
+                            <field name="end_time" readonly="1" />
+                            <field name="total_time" />
+                            <field name="actual_time" />
+
+
+                            <button name="action_take" type="object" string="Take"
+                                class="btn-primary"
+                                invisible="cleaning_status in ['in_maintenance','cleaned']" />
+                            <button name="action_done" type="object" string="Done"
+                                class="btn-success"
+                                invisible="cleaning_status == 'cleaned'" />
+                            <button name="action_discard" type="object" string="Discard"
+                                class="btn-danger"
+                                invisible="cleaning_status in ['in_maintenance','cleaned','discard']" />
+                        </group>
+                    </group>
+                </sheet>
+
+                <header>
+                    <field name="maintenance_status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group string="Maintenance Issue">
+                            
+                            <field name="maintenance_descriptionn" />
+                            <button name="action_send_to_maintenance" type="object"
+                                string="Maintenance Sent"
+                                class="btn-primary" invisible="maintenance_status in ['sent', 'assigned', 'completed']"/>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_housekeeping_view_list" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.view.list</field>
+        <field name="model">hotel.housekeeping</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="room_id" />
+                <field name="request_id" />
+                <field name="description" />
+                <field name="employee_id" />
+                <!-- <field name="floor"/> -->
+                <field name="service" />
+                <field name="cleaning_status" />
+                <field name="maintenance_descriptionn" />
+                <field name="maintenance_status" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hotel_housekeeping_view_calendar" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.view.calendar</field>
+        <field name="model">hotel.housekeeping</field>
+        <field name="arch" type="xml">
+            <calendar string="Hotel Housekeeping" create="0" mode="month"
+                date_start="planned_start_date" date_stop="planned_end_date">
+                <field name="room_id" />
+                <field name="planned_start_date" />
+                <field name="planned_end_date" />
+            </calendar>
+        </field>
+    </record>
+
+
+    <record id="hotel_housekeeping_action" model="ir.actions.act_window">
+        <field name="name">Hotel Housekeeping</field>
+        <field name="res_model">hotel.housekeeping</field>
+        <field name="view_mode">list,calendar,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="hotel_housekeeping_menu"
+        name="Hotel Housekeeping"
+        action="hotel_housekeeping_action"
+        sequence="1" /> -->
+
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="number_of_complaints_report_view_pivot" model="ir.ui.view">
+        <field name="name">number.of.complaints.report.view.pivot</field>
+        <field name="model">complaint.status.report</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="status" type="row" />
+                <field name="total_complaints" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="number_of_complaints_report_view_graph" model="ir.ui.view">
+        <field name="name">number.of.complaints.report.view.graph</field>
+        <field name="model">complaint.status.report</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="status" type="row" />
+                <field name="total_complaints" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="number_of_complaints_report_view_list" model="ir.ui.view">
+        <field name="name">number.of.complaints.report.view.list</field>
+        <field name="model">complaint.status.report</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="status" type="row" />
+                <field name="total_complaints" type="measure" />
+            </list>
+        </field>
+    </record>
+
+    <record id="courier_complaint_status_report_view_action" model="ir.actions.act_window">
+        <field name="name">Number of complaints</field>
+        <field name="res_model">complaint.status.report</field>
+        <field name="view_mode">graph,pivot,list</field>
+    </record>
+
+    <!-- <menuitem
+        id="courier_complaint_status_report_menu"
+        name="Number of complaints"
+        action="courier_complaint_status_report_view_action"
+        sequence="1" /> -->
+
+</odoo>

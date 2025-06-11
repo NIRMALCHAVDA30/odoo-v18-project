@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_management_view_form" model="ir.ui.view">
+        <field name="name">hotel.management.view.form</field>
+        <field name="model">hotel.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!-- state button for available room -->
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                            type="object"
+                            name="action_view_available_rooms"
+                            icon="fa-bed">
+                            <div class="o_stat_info">
+                                <field name="available_room_count" class="o_stat_value" />
+                                <span class="o_stat_text">Available Rooms</span>
+                            </div>
+                        </button>
+                        <!-- </div> -->
+
+                        <!-- state button for book room -->
+                        <!-- <div class="oe_button_box" name="button_box"> -->
+                        <button class="oe_stat_button"
+                            type="object"
+                            name="action_view_book_rooms"
+                            icon="fa-bookmark">
+                            <div class="o_stat_info">
+                                <field name="available_book_room_count" class="o_stat_value" />
+                                <span class="o_stat_text">Booked Rooms</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="location" />
+                            <field name="contact" />
+                        </group>
+                        <group>
+                            <field name="hotel_image" widget="image" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="About the hotel">
+                            <group>
+                                <field name="description" />
+                            </group>
+                        </page>
+                        <page string="Rooms">
+                            <field name="room_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_management_view_list" model="ir.ui.view">
+        <field name="name">hotel.management.view.list</field>
+        <field name="model">hotel.management</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="location" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hotel_management_view_kanban" model="ir.ui.view">
+        <field name="name">hotel.management.view.kanban</field>
+        <field name="model">hotel.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <field name="hotel_image" widget="image" />
+                            <div>
+                                <span><strong>Hotel Name : </strong></span>
+                                <field name="name" />
+                            </div>
+                            <div>
+                                <span><strong>Discription : </strong></span>
+                                <field name="description" />
+                            </div>
+                        </div> 
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hotel_management_action" model="ir.actions.act_window">
+        <field name="name">Hotel Management</field>
+        <field name="res_model">hotel.management</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="hotel_management_menu"
+        name="Hotel Management"
+        action="hotel_management_action"
+        sequence="1" /> -->
+
+</odoo>

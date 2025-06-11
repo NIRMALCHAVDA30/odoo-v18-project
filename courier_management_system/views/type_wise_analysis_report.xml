@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="type_wise_analysis_report_view_pivot" model="ir.ui.view">
+        <field name="name">type.wise.analysis.report.view.pivot</field>
+        <field name="model">type.wise.report.complaint</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="complaint_category" type="row" />
+                <field name="complaint_count" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="customer_complaints_type_wise_report_view_graph" model="ir.ui.view">
+        <field name="name">customer.complaints.type.wise.report.view.graph</field>
+        <field name="model">type.wise.report.complaint</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="complaint_category" type="row"/>
+                <field name="complaint_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="type_wise_analysis_report_view_list" model="ir.ui.view">
+        <field name="name">type.wise.analysis.report.view.list</field>
+        <field name="model">type.wise.report.complaint</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="complaint_category" />
+                <field name="complaint_count" />
+            </list>
+        </field>
+    </record>
+
+
+    <record id="customer_complaints_type_wise_report_view_action" model="ir.actions.act_window">
+        <field name="name">Type-wise analysis</field>
+        <field name="res_model">type.wise.report.complaint</field>
+        <field name="view_mode">graph,pivot,list</field>
+    </record>
+
+    <!-- <menuitem
+        id="customer_complaints_type_wise_report_menu"
+        name="Type-wise analysis"
+        action="customer_complaints_type_wise_report_view_action"
+        sequence="1" /> -->
+
+</odoo>

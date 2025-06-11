@@ -1,0 +1,89 @@
+<odoo>
+    <record id="restraunt_food_view_form" model="ir.ui.view">
+        <field name="name">restraunt.food.view.form</field>
+        <field name="model">restraunt.food</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button type="object" name="action_order" string="Order" class="btn btn-primary"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="description" />
+                            <field name="hotel_id" />
+                            <field name="price" />
+                        </group>
+                        <group>
+                            <field name="food_image" widget="image" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="restraunt_food_view_list" model="ir.ui.view">
+        <field name="name">restraunt.food.view.list</field>
+        <field name="model">restraunt.food</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="description" />
+                <field name="price" />
+                <field name="hotel_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="restraunt_food_view_kanban" model="ir.ui.view">
+        <field name="name">restraunt.food.view.kanban</field>
+        <field name="model">restraunt.food</field>
+        <field name="arch" type="xml">
+            <kanban records_draggable="0" groups_draggable="0">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <h2 style="padding-left:130px;">
+                                <field name="name" />
+                            </h2>
+                            <field name="food_image" widget="image"/>
+                            <div>
+                                <h2>
+                                <span>
+                                    <strong>Price : </strong>
+                                </span>
+                                
+                                    <field name="price" /> 
+                                </h2>   
+                            </div>
+                            <div>
+                                <span>
+                                    <strong>Description : </strong>
+                                </span>
+                                    <field name="description" /> 
+                            </div>
+                            <div>
+                                <button type="object" name="action_order" string="Order" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="restraunt_food_action" model="ir.actions.act_window">
+        <field name="name">Restraunt Food</field>
+        <field name="res_model">restraunt.food</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="restraunt_food_menu"
+        name="Restraunt Food"
+        action="restraunt_food_action"
+        sequence="1" /> -->
+
+</odoo>

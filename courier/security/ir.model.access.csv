@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+courier.access_courier_request,access_courier_request,courier.model_courier_request,base.group_user,1,1,1,1
+courier.access_courier_tag,access_courier_tag,courier.model_courier_tag,base.group_user,1,1,1,1
+courier.access_courier_type,access_courier_type,courier.model_courier_type,base.group_user,1,1,1,1
+courier.access_courier_categories,access_courier_categories,courier.model_courier_categories,base.group_user,1,1,1,1
+courier.access_courier_priorities,access_courier_priorities,courier.model_courier_priorities,base.group_user,1,1,1,1
+courier.access_courier_weight_price_rule,access_courier_weight_price_rule,courier.model_courier_weight_price_rule,base.group_user,1,1,1,1
+courier.access_courier_dimension_price_rule,access_courier_dimension_price_rule,courier.model_courier_dimension_price_rule,base.group_user,1,1,1,1
+courier.access_courier_distance_price_rule,access_courier_distance_price_rule,courier.model_courier_distance_price_rule,base.group_user,1,1,1,1

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_booking" model="ir.actions.report">
+            <field name="name">Booking Report</field>
+            <field name="model">booking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hotel_management.report_booking_template</field>
+            <field name="report_file">hotel_management.report_booking_template</field>
+            <field name="print_report_name">'Booking - %s' % object.guest_id.name</field>
+            <field name="binding_model_id" ref="hotel_management.model_booking" />
+            <field name="binding_type">report</field>
+        </record>
+
+</odoo>

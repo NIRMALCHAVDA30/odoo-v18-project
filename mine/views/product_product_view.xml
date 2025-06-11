@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="product_product_view_bought_product" model="ir.ui.view">
+            <field name="name">product.product.view.bought.product</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                   
+                        <button name="bought_specific_product"
+                                type="object"
+                                string="Bought Product"
+                                class="btn-primary"/>
+                   
+                </xpath>
+            </field>
+        </record>
+    
+
+</odoo>

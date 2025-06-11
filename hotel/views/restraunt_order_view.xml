@@ -1,0 +1,42 @@
+<odoo>
+    <record id="restraunt_order_view_form" model="ir.ui.view">
+        <field name="name">restraunt.order.view.form</field>
+        <field name="model">restraunt.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="booking_id" />
+                        <field name="food_id" />
+                        <field name="price" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="restraunt_order_view_list" model="ir.ui.view">
+        <field name="name">restraunt.order.view.list</field>
+        <field name="model">restraunt.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="booking_id" optional="hide"/>
+                <field name="food_id" />
+                <field name="price" />
+            </list>
+        </field>
+    </record>
+
+    <record id="restraunt_order_action" model="ir.actions.act_window">
+        <field name="name">Restraunt Order</field>
+        <field name="res_model">restraunt.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="restraunt_order_menu"
+        name="Restraunt Order"
+        action="restraunt_order_action"
+        sequence="1" /> -->
+
+</odoo>

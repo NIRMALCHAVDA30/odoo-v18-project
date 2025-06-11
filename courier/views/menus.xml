@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="courier_request_menu"
+        name="Courier Request"
+        action="courier_request_action"
+        sequence="1" />
+
+    <menuitem
+        id="configurations_courier_menuiteam_setting"
+        name="Configurations"
+        parent = "courier_request_menu"
+        sequence="2"/>
+
+    <menuitem
+        id="basic_configurations_menuiteam"
+        name="Basic"
+        parent = "configurations_courier_menuiteam_setting"
+        sequence="3"/>
+
+    <menuitem
+        id="courier_tag_menu"
+        name="Tags"
+        parent="basic_configurations_menuiteam"
+        action="courier_tag_action"
+        sequence="4" />
+
+    <menuitem
+        id="courier_type_menu"
+        name="Types"
+        parent="basic_configurations_menuiteam"
+        action="courier_type_action"
+        sequence="5" />
+
+    <menuitem
+        id="courier_categories_menu"
+        name="Categories"
+        parent="basic_configurations_menuiteam"
+        action="courier_categories_action"
+        sequence="6" />
+
+    <menuitem
+        id="pricing_configurations_menuiteam"
+        name="Pricing"
+        parent = "configurations_courier_menuiteam_setting"
+        sequence="7"/>
+
+    <menuitem
+        id="courier_priorities_menu"
+        name="Priorities"
+        parent="pricing_configurations_menuiteam"
+        action="courier_priorities_action"
+        sequence="8" />
+
+    <menuitem
+        id="courier_weight_price_rule_menu"
+        name="Weight Price Rules"
+        parent="pricing_configurations_menuiteam"
+        action="courier_weight_price_rule_action"
+        sequence="9" />
+
+    <menuitem
+        id="courier_dimension_price_rule_menu"
+        name="Dimension Price Rules"
+        parent="pricing_configurations_menuiteam"
+        action="courier_dimension_price_rule_action"
+        sequence="10" />
+
+    <menuitem
+        id="courier_distance_price_rule_menu"
+        name="Distance Price Rules"
+        parent="pricing_configurations_menuiteam"
+        action="courier_distance_price_rule_action"
+        sequence="11" />
+</odoo>

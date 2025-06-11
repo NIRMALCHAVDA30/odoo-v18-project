@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="bookings_shipping_route_pivot_view" model="ir.ui.view">
+        <field name="name">bookings.shipping.route.pivot.view</field>
+        <field name="model">report.routes</field>
+        <field name="arch" type="xml">
+            <pivot string="route_wise Performance" sample="1">
+                <field name="state" type="col"/>
+                <field name="booking_route_id" type="row"/>
+                <field name="count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="bookings_shipping_route_graph_view" model="ir.ui.view">
+        <field name="name">bookings.shipping.route.graph.view</field>
+        <field name="model">report.routes</field>
+        <field name="arch" type="xml">
+            <graph string="Route Wise Performance" type='bar' sample="1">
+                <field name="booking_route_id" type="row"/>
+                <field name="state" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id='report_route_wise_view_action' model='ir.actions.act_window'>
+        <field name="name">Route Wise Performance</field>
+        <field name="res_model">report.routes</field>
+        <field name='view_mode'>graph,pivot</field>
+    </record>
+</odoo>

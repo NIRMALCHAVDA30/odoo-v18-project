@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_view_company_inherit" model="ir.ui.view">
+        <field name="name">sale.order.view.company.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Task 1 -->
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="domain">[('is_company', '=', True)]</attribute>
+            </xpath>
+
+            <!-- Task 2 -->
+            <xpath expr="//field[@name='partner_invoice_id']" position="attributes">
+                <attribute name="domain">[('parent_id', '=', partner_id), ('type', '=', 'invoice')]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                <attribute name="domain">[('parent_id', '=', partner_id), ('type', '=', 'delivery')]</attribute>
+            </xpath>
+
+            <!-- Task 3 -->
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <xpath expr="//field[@name='user_id']" position="move"/>
+            </xpath>
+
+
+            <!-- Task 4 -->
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="service_total"/>
+                    <field name="service_percentage"/>
+                    <field name="other_total"/>
+                    <field name="other_percentage"/>
+            </xpath>
+
+            <!-- Task 6 -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_template_id']" position="before">
+                <field name="product_available_qty" />
+            </xpath>
+
+
+            <!-- Task 7 -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_customer_sale_orders"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-list">
+                    <field name="confirmed_sale_order_count" widget="statinfo" string="Customer SOs"/>
+                </button>
+            </xpath>
+
+            <!-- Task 9 -->
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <field name="country_of_origin" invisible="not is_invisible"/>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

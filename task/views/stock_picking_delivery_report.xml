@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Task 8 -->
+    <template id="stock_picking_delivery_report_inherit" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='div_sched_date']" position="after">
+            <div>
+                <strong>Terms and Conditions:</strong>
+                <div t-field="o.terms_conditions"/>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

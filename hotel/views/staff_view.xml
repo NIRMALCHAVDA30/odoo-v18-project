@@ -1,0 +1,49 @@
+<odoo>
+    <record id="staff_view_form" model="ir.ui.view">
+        <field name="name">staff.view.form</field>
+        <field name="model">staff</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <h1>
+                    <field name="name" />
+                    <field name="staff_photo" widget="image" class="oe_avatar m-0"/>
+                </h1>
+                    <group>
+                        <field name="email" />
+                        <field name="phone" />
+                        <field name="job_position" />
+                        <field name="age" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="staff_view_list" model="ir.ui.view">
+        <field name="name">staff.view.list</field>
+        <field name="model">staff</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="email" />
+                <field name="phone" />
+                <field name="job_position" />
+                <field name="age" />
+            </list>
+        </field>
+    </record>
+
+    <record id="staff_action" model="ir.actions.act_window">
+        <field name="name">Staff</field>
+        <field name="res_model">staff</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="staff_menu"
+        name="Staff"
+        action="staff_action"
+        sequence="1" /> -->
+
+</odoo>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="courier_tracking_form_view_id" model="ir.ui.view">
+        <field name="name">Courier Tracking</field>
+        <field name="model">courier.tracking</field>
+        <field name="arch" type="xml">
+            <form create="0" delete="0">
+                <header>
+                    <field name="state" statusbar_visible="picked,in_transit,out_for_delivery,delivered" widget="statusbar" />
+                    <button class="btn btn-primary" invisible="state in ('draft','confirmed','picked','in_transit','out_for_delivery','delivered')" groups="courier_management.courier_management_delivery_boy_group" name="action_pickup" string="Picked-Up" type="object"/>
+                    <button class="btn btn-primary" invisible="state in ('draft','confirmed','invoiced','in_transit','out_for_delivery','delivered')" groups="courier_management.courier_management_delivery_boy_group" name="action_in_transit_time" string="In Transit" type="object"/>
+                    <button class="btn btn-primary" invisible="state in ('draft','confirmed','invoiced','picked','out_for_delivery','delivered')" groups="courier_management.courier_management_delivery_boy_group" name="action_out_for_delivery" string="Out For Delivery" type="object"/>
+                    <button class="btn btn-primary" invisible="state in ('draft','confirmed','invoiced','picked','in_transit','delivered')" groups="courier_management.courier_management_delivery_boy_group" name="action_btn_delivered" string="Delivered" type="object"/>
+                    <!-- <button class="btn btn-primary" invisible="state in ('draft','confirmed','picked','in_transit','delivered')" name="action_fill_data" string="Fill Data" type="object"/> -->
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_complaints" groups="courier_management.courier_customer_group" type="object" class="oe_stat_button" icon="fa-hand-paper-o">
+                            <field name="complaint_ids" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="is_favorite" widget="boolean_favorite" nolabel="1" />
+                            <field name="tracking_id" string="Tracking Number" readonly="1" style="font-weight:600;" />
+                        </h1>
+                    </div>
+                    <group string="Tracking Details">
+                        <group>
+                            <field name="booking_id" style="font-weight:bold;" options="{'no_open': True}" readonly="1" />
+                            <field name="route_id" style="font-weight:bold;" readonly="1" options="{'no_open': True}" />
+                        </group>
+                        <group>
+                            <field name="timestamp" style="font-weight:bold;" readonly="1" string="Time Stamp" />
+                            <field name="selected_mode_id" style="font-weight:bold;" options="{'no_open': True}" string="Delivery Priority" widget="badge" readonly="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Source information">
+                            <field name="sender_id" options="{'no_open': True}" widget="many2one_avatar_user" readonly="1" />
+                            <span>Pickup Address</span>
+                            <div class="o_address_format">
+                                <field name="street" readonly="1" placeholder="Street..." class="o_address_street" />
+                                <field name="city" readonly="1" placeholder="City" class="o_address_city" />
+                                <field name="state_id" readonly="1" class="o_address_state" placeholder="State"/>
+                                <field name="zip" placeholder="ZIP" readonly="1" class="o_address_zip" />
+                            </div>
+                            <field name="phone" readonly="1" widget="phone" />
+                        </group>
+                        <group string="Destination information">
+                            <field name="reciever_id" options="{'no_open': True}" widget="many2one_avatar_user" readonly="1" />
+                            <span>Destination Address</span>
+                            <div class="o_address_format">
+                                <field name="reciever_street" readonly="1" placeholder="Street..." class="o_address_street" />
+                                <field name="reciever_city" readonly="1" placeholder="City" class="o_address_city" />
+                                <field name="reciever_state_id" readonly="1" class="o_address_state" placeholder="State"/>
+                                <field name="reciever_zip" readonly="1" placeholder="ZIP" class="o_address_zip" />
+                            </div>
+                            <field name="reciever_phone" readonly="1" widget="phone" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Timeline" style="font-weight:bold;" invisible="state in ('draft','confirmed','invoiced')">
+                            <group>
+                                <group name="name" string="Tracking Details">
+                                    <div class="o_timeline_container fadeInUp-animation">
+                                        <div class="o_timeline_line"></div>
+                                        <div class="o_timeline_item">
+                                            <div class="o_timeline_dot"></div>
+                                            <div class="o_timeline_content">
+                                                <strong class="fadeInUp-animation">Pickup Time</strong>
+                                                <br/>
+                                                <i class="fa fa-level-down" aria-hidden="true" style="color:rgb(128, 105, 180);"/>
+                                                <field name="pickup_time" style="font-weight:bold;color:rgb(128, 105, 180);" placeholder="Will Update" readonly="1"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_timeline_item" invisible="state in ('draft','confirmed','invoiced','picked')">
+                                            <div class="o_timeline_dot"></div>
+                                            <div class="o_timeline_content">
+                                                <strong class="fadeInUp-animation">In Transit</strong>
+                                                <br/>
+                                                <i class="fa fa-level-down" aria-hidden="true"></i>
+                                                <field name="in_transit_time" style="font-weight:bold;color:rgb(128, 105, 180);" placeholder="Will Update" readonly="1"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_timeline_item" invisible="state in ('draft','confirmed','invoiced','picked','in_transit')">
+                                            <div class="o_timeline_dot"></div>
+                                            <div class="o_timeline_content">
+                                                <strong class="fadeInUp-animation">Out for Delivery</strong>
+                                                <br/>
+                                                <i class="fa fa-level-down" aria-hidden="true"></i>
+                                                <field name="out_for_delivery_time" style="font-weight:bold;color:rgb(128, 105, 180);" placeholder="Will Update" readonly="1"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_timeline_item" invisible="state in ('draft','confirmed','invoiced','picked','in_transit','out_for_delivery')">
+                                            <div class="o_timeline_dot"></div>
+                                            <div class="o_timeline_content">
+                                                <strong class="fadeInUp-animation">Delivered</strong>
+                                                <br/>
+                                                <i class="fa fa-level-down" aria-hidden="true" />
+                                                <field name="delivered_time" style="font-weight:bold;color:rgb(128, 105, 180);" placeholder="Will Update" readonly="1"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </group>
+                                <group name="Delivery Agent" string="Delivery Details">
+                                    <field name="agent_id" options="{'no_open': True}" readonly="1"/>
+                                    <field name="rating" invisible="state in ('draft','confirmed','invoiced','picked','in_transit','out_for_delivery')" widget="priority" readonly="1" />
+                                    <field name="delivery_proof" readonly="1" invisible="state in ('draft','invoiced','picked','in_transit','out_for_delivery')" widget="signature" />
+                                    <field name="delivery_notes" invisible="state in ('draft','invoiced','picked','in_transit','out_for_delivery')" readonly="1" />
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Internal Note" style="font-weight:bold;">
+                            <field name="internal_notes" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter style="font-weight:bold; font-family:tahoma;" />
+            </form>
+        </field>
+    </record>
+    <record id="courier_tracking_kanban_view_id" model="ir.ui.view">
+        <field name="name">Courier Tracking</field>
+        <field name="model">courier.tracking</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by='state' create="0">
+                <templates>
+                    <t t-name="card">
+                        <div class="hotel_kanban_card">
+                            <!-- <field name="kanban_state" style="float:right;" widget="project_state_selection"/> -->
+                            <main class="hotel_kanban_info">
+                                <div class="oe_title">
+                                    <h2 class="d-flex">
+                                        <field name="is_favorite" widget="boolean_favorite" nolabel="1" />
+                                        <field name="tracking_id" style="font-weight:600;" readonly="1" />
+                                    </h2>
+                                    <field name="state" readonly="1" style="color:purple; font-weight:bold;" />
+                                </div>
+                                <group>
+                                </group>
+                                <hr class="my-1"/>
+                                <div class="d-flex align-items-center">
+                                    <span style="font-weight:bold;">Sender:<field name="sender_id" options="{'no_open': True}"/>
+                                    </span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span style="font-weight:bold;">Address:<field name="reciever_street" options="{'no_open': True}"/>
+                                    </span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span style="font-weight:bold;">Delivery Days:
+                                        <field name="delivery_estimate" style="font-weight:700; color:green;"/>
+                                    </span>
+                                </div>
+                            </main>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="courier_tracking_list_view_id" model="ir.ui.view">
+        <field name="name">Courier Tracking</field>
+        <field name="model">courier.tracking</field>
+        <field name="arch" type="xml">
+            <list create="0" decoration-success="state=='delivered'" decoration-warning="state=='out_for_delivery'" decoration-muted="state == 'draft'">
+                <field name="tracking_id" />
+                <field name="sender_id" />
+                <field name="reciever_id" />
+                <field name="route_id" />
+                <field name="selected_mode_id" widget="badge" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+    <record id="courier_management_tracking_action_id" model="ir.actions.act_window">
+        <field name="name">Courier Tracking</field>
+        <field name="res_model">courier.tracking</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+</odoo>

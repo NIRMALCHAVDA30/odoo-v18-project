@@ -1,0 +1,21 @@
+<odoo>
+    <record id="sale_cancel_wizard_form_view" model="ir.ui.view">
+        <field name="name">sale.cancel.wizard.form.view</field>
+        <field name="model">sale.cancel.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                        <field name="reason" />
+                        <field name="send_email" />
+                        <field name="reason_details" />
+
+                </group>
+                <footer>
+                    <button name="action_cancel_order" type="object"
+                        string="Cancel Order" class="btn-primary" />
+                    <button string="Discard" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

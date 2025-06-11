@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<menuitem id="courier_management_parent_menu_id" 
+          name="Courier Management"
+          sequence="1"/>
+
+<!--  Dashboard menu  -->
+      <menuitem id="courier_management_dashboard_parent_menu"
+            name="Overview"
+            parent="courier_management_parent_menu_id"
+            sequence="1"
+      />
+        <menuitem id="courier_overview_sub_menu_id"
+            name="Analysis"
+            parent="courier_management_dashboard_parent_menu"
+            sequence="1"
+            groups="courier_management.courier_management_admin_id"
+      />
+
+<menuitem id="courier_management_courier_tracking_parent_id" 
+          name="Tracking"
+          parent="courier_management_parent_menu_id"
+          sequence="2"
+          groups="courier_management.courier_management_delivery_boy_group,courier_management.courier_customer_group"
+          action="courier_management_tracking_action_id"/>
+
+    <menuitem id="courier_management_courier_tracking_sub_id" 
+              name="Courier Tracking"
+              parent="courier_management_courier_tracking_parent_id"
+              sequence="1"
+              action="courier_management_tracking_action_id" />
+              
+<menuitem id="courier_management_booking_menu_id" 
+          name="Booking"
+          parent="courier_management_parent_menu_id"
+          sequence="3"
+          groups="courier_management.courier_customer_group,courier_management.courier_management_manager_group"
+          action="courier_booking_action_id"/>
+
+<menuitem id="courier_management_report_parent_analysis_menu" 
+          name="Reporting"
+          parent="courier_management_parent_menu_id"
+          sequence="4"
+          groups="courier_management.courier_management_admin_id"
+          action="courier_reporting_action_id"
+          />
+
+    <menuitem id="courier_management_configuration_menu_id" 
+              name="Configuration"
+              parent="courier_management_parent_menu_id"
+              sequence="5"
+              groups="courier_management.courier_management_admin_id"/>
+
+    <menuitem id="courier_management_booking_parent_menu_id" 
+              name="Bookings" 
+              parent="courier_management_booking_menu_id"
+              sequence="1"
+              groups="courier_management.courier_management_manager_group" />
+
+    <menuitem id="courier_management_delivery_agent_parent_menu_id" 
+              name="Agent"
+              parent="courier_management_booking_menu_id"
+              sequence="2"
+              groups="courier_management.courier_management_manager_group" />
+
+    <menuitem id="courier_management_customer_complaint_parent_menu" 
+              name="Complaints"
+              parent="courier_management_booking_menu_id" />
+    
+    <menuitem id="courier_customer_complaint_wizard_menu"
+              name="Create Complaint" 
+              groups="courier_management.courier_customer_group"
+              parent="courier_management_customer_complaint_parent_menu"
+              action="courier_customer_complaint_wizard_action" />
+
+    <menuitem id="courier_management_view_complaints_parent_menu" 
+              name="View Complaints" 
+              parent="courier_management_booking_menu_id"
+              groups="courier_management.courier_management_manager_group,courier_management.courier_management_admin_id"/>
+
+    <menuitem id="courier_management_view_complaints_sub_menu" 
+              name="Customer Complaints" 
+              parent="courier_management_view_complaints_parent_menu"
+              action="courier_customer_complaint_action_id" />
+
+    <!-- Submenu: Bookings list -->
+    <menuitem id="courier_management_booking_sub_menu_id" 
+              name="Bookings"  
+              parent="courier_management_booking_parent_menu_id"
+              sequence="1"
+              action="courier_booking_action_id" />
+
+    <!-- Submenu: Delivery Agent -->
+    <menuitem id="courier_management_delivery_agent_menu_id" 
+              name="Delivery Agent" 
+              parent="courier_management_delivery_agent_parent_menu_id"
+              sequence="1"
+              groups="courier_management.courier_management_manager_group"
+              action="courier_delivery_agent_action_id" />
+ 
+    <menuitem id="courier_cmd_report_submenu" 
+          name="Report Analysis"
+          parent="courier_management_report_parent_analysis_menu"
+          sequence="1"
+          groups="courier_management.courier_management_admin_id"
+          />
+
+    <!-- <menuitem id="courier_management_report_sub_analysis_menu" 
+          name="Mode Wise Reporting"
+          parent="courier_cmd_report_submenu"
+          sequence="1"
+          groups="courier_management.courier_management_admin_id"
+          action="courier_reporting_action_id"
+          /> -->
+
+    <!-- Shipping Configuration -->
+    <menuitem id="courier_management_shipping_parent_menu_id" 
+              name="Shipping"
+              groups="courier_management_admin_id"
+              parent="courier_management_configuration_menu_id"
+              sequence="1" />
+
+    <menuitem id="courier_management_shipping_mode_menu_id" 
+              name="Shipping Mode" 
+              parent="courier_management_shipping_parent_menu_id" 
+              sequence="1"
+              groups="courier_management_admin_id"
+              action="shipping_mode_action_id" />
+
+    <menuitem id="courier_management_shipping_route_menu_id" 
+              name="Shipping Route" 
+              parent="courier_management_shipping_parent_menu_id" 
+              sequence="2"
+              groups="courier_management_admin_id"
+              action="shipping_route_action_id" />
+
+    <!-- Tags Configuration -->
+    <menuitem id="courier_management_tags_parent_menu" 
+              name="Tags" 
+              parent="courier_management_configuration_menu_id"
+               groups="courier_management.courier_management_admin_id"
+              sequence="3" />
+
+    <menuitem id="courier_management_tags_sub_menu" 
+              name="Courier Tags" 
+              parent="courier_management_tags_parent_menu"
+              action="courier_management_tags_action_id" />
+
+       <menuitem id="courier_cmd_report_submenu"
+            name="Report Analysis"
+            parent="courier_management_report_parent_analysis_menu"
+            sequence="1"
+            groups="courier_management.courier_management_admin_id"
+      />
+
+      <menuitem id="courier_management_report_sub_analysis_menu"
+            name="Mode Wise Reporting"
+            parent="courier_cmd_report_submenu"
+            sequence="1"
+            groups="courier_management.courier_management_admin_id"
+            action="courier_reporting_action_id"
+      />
+
+      <menuitem id="courier_management_report_route_menu"
+            name="Route Wise Performance"
+            parent="courier_cmd_report_submenu"
+            sequence="2"
+            groups="courier_management.courier_management_admin_id"
+            action="report_route_wise_view_action"
+      />
+
+
+      <menuitem id="courier_management_dashboard_complaint_state_menu"
+            name="Open/Closed Complaints"
+            parent="courier_overview_sub_menu_id"
+            sequence="1"
+            groups="courier_management.courier_management_admin_id"
+            action="report_complaint_status_new_view_action"
+      />
+
+      <menuitem id="courier_management_dashboard_types_menu"
+            name="Category Wise Complaints"
+            parent="courier_overview_sub_menu_id"
+            sequence="2"
+            groups="courier_management.courier_management_admin_id"
+            action="dashboard_report_types_view_action"
+      />
+
+      <menuitem id="courier_management_dashboard_agent_menu"
+      name="Agent Wise Performance"
+      parent="courier_overview_sub_menu_id"
+      sequence="3"
+      groups="courier_management.courier_management_admin_id"
+      action="dashboard_report_agent_view_action"
+      />
+</odoo>

@@ -1,0 +1,50 @@
+
+.o_timeline_container {
+    position: relative;
+    margin-left: 30px;
+    padding-left: 20px;
+}
+.o_timeline_line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    border-radius: 10px;
+    width: 15px;
+    background: rgb(128, 105, 180);
+}
+
+.card {
+  border: none;
+}
+.o_timeline_item {
+    position: relative;
+    margin-bottom: 20px;
+}
+.o_timeline_dot {
+    position: absolute;
+    left: -8px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(92, 64, 157);
+    border: 2px solid rgb(255, 255, 255);
+}
+.o_timeline_content {
+    padding-left: 20px;
+}
+
+@keyframes fadeInUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+.fadeInUp-animation {
+    animation: 1.5s fadeInUp;
+  }

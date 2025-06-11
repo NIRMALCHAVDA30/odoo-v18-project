@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+hotel_maintenance.access_hotel_maintenance,access_hotel_maintenance,hotel_maintenance.model_hotel_maintenance,base.group_user,1,1,1,1

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_room_housekeeping_view_form" model="ir.ui.view">
+        <field name="name">hotel.room.housekeeping.view.form</field>
+        <field name="model">hotel.room</field>
+        <field name="inherit_id" ref="hotel_management_system.hotel_room_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='booking_ids']" position="before">
+                <field name="housekeeping_ids" string="Housekeeping" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
+
+

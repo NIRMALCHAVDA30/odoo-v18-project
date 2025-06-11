@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="courier_booking_menu"
+        name="Courier Management"
+        action="courier_booking_action"
+        sequence="1" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent,courier_management_system.group_cms_customer"/>
+
+    <menuitem
+        id="booking_courier_menuiteam_setting"
+        name="Bookings"
+        parent = "courier_booking_menu"
+        sequence="2"
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_customer"/>
+
+    <menuitem
+        id="courier_booking_menu1"
+        name="Courier Bookings"
+        parent="booking_courier_menuiteam_setting"
+        action="courier_booking_action"
+        sequence="3" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee"/>
+
+    <menuitem
+        id="delivery_agent_menu"
+        name="Delivery Agents"
+        parent="booking_courier_menuiteam_setting"
+        action="delivery_agent_action"
+        sequence="4" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee"/>
+
+    <menuitem
+        id="customer_complaint_menu"
+        name="Customer Complaints"
+        parent="booking_courier_menuiteam_setting"
+        action="customer_complaint_action"
+        sequence="5" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_customer"/>
+
+    <menuitem
+        id="tracking_courier_menuiteam_setting"
+        name="Tracking"
+        parent = "courier_booking_menu"
+        sequence="6"
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent,courier_management_system.group_cms_customer"/>
+
+    <menuitem
+        id="courier_tracking_menu"
+        name="Courier Tracking"
+        parent="tracking_courier_menuiteam_setting"
+        action="courier_tracking_action"
+        sequence="7" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent,courier_management_system.group_cms_customer"/>
+
+    <menuitem
+        id="reporting_menuiteam_setting"
+        name="Reporting"
+        parent = "courier_booking_menu"
+        sequence="8"
+        groups="courier_management_system.group_cms_admin"/>
+
+    <menuitem
+        id="courier_booking_report_menu"
+        name="Mode-wise delivery"
+        parent="reporting_menuiteam_setting"
+        action="mode_wise_report_view_action"
+        sequence="9" 
+        groups="courier_management_system.group_cms_admin"/>
+
+    <menuitem
+        id="courier_booking_route_report_menu"
+        name="Route performance"
+        parent="reporting_menuiteam_setting"
+        action="route_performance_report_view_action"
+        sequence="10" 
+        groups="courier_management_system.group_cms_admin"/>
+
+    <menuitem
+        id="complaint_reports_report_sub_menu"
+        name="Complaint Reports"
+        parent = "reporting_menuiteam_setting"
+        sequence="11"
+        groups="courier_management_system.group_cms_admin"/>
+
+    <menuitem
+        id="courier_complaint_status_report_menu"
+        name="Number of complaints"
+        parent="complaint_reports_report_sub_menu"
+        action="courier_complaint_status_report_view_action"
+        sequence="12" 
+        groups="courier_management_system.group_cms_admin"/>
+
+    <menuitem
+        id="customer_complaints_type_wise_report_menu"
+        name="Type-wise analysis"
+        parent="complaint_reports_report_sub_menu"
+        action="customer_complaints_type_wise_report_view_action"
+        sequence="13"
+        groups="courier_management_system.group_cms_admin" />
+
+    <menuitem
+        id="agent_resolution_report_menu"
+        name="Agent-wise resolution performance"
+        parent="complaint_reports_report_sub_menu"
+        action="agent_resolution_report_action"
+        sequence="14" 
+        groups="courier_management_system.group_cms_admin" />
+
+    <menuitem
+        id="configurations_courier_management_menuiteam_setting"
+        name="Configurations"
+        parent = "courier_booking_menu"
+        sequence="15"
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_customer"/>
+    
+    <menuitem
+        id="shipping_courier_management_menuiteam_setting"
+        name="Shipping"
+        parent = "configurations_courier_management_menuiteam_setting"
+        sequence="16"
+        groups="courier_management_system.group_cms_admin"/>
+    
+    <menuitem
+        id="shipping_mode_menu"
+        name="Shipping Modes"
+        parent="shipping_courier_management_menuiteam_setting"
+        action="shipping_mode_action"
+        sequence="17" 
+        groups="courier_management_system.group_cms_admin"/>
+
+    <menuitem
+        id="shipping_route_menu"
+        name="Shipping Routes"
+        parent="shipping_courier_management_menuiteam_setting"
+        action="shipping_route_action"
+        sequence="18" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee"/>
+    
+
+    <menuitem
+        id="complaints_courier_management_menuiteam_setting"
+        name="Complaints"
+        parent = "configurations_courier_management_menuiteam_setting"
+        sequence="19"
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_customer"/>
+
+    <menuitem
+        id="customer_complaint_show_menu"
+        name="Show Complaints"
+        parent="complaints_courier_management_menuiteam_setting"
+        action="customer_complaint_show_action"
+        sequence="20" 
+        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_customer"/>
+
+
+    
+
+</odoo>

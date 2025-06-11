@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+hotel_restaurant.access_hotel_restaurant,access_hotel_restaurant,hotel_restaurant.model_hotel_restaurant,base.group_user,1,1,1,1
+hotel_restaurant.access_restaurant_order,access_restaurant_order,hotel_restaurant.model_restaurant_order,base.group_user,1,1,1,1

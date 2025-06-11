@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_guest_view_form" model="ir.ui.view">
+        <field name="name">hotel.guest.view.form</field>
+        <field name="model">hotel.guest</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- <field name="name" />
+                        <field name="phone" />
+                        <field name="email" />
+                        <field name="id_proof" />
+                        <field name="nationality"/>
+                        <field name="preferences" /> -->
+
+                        <!-- <field name="guest_with_bookings" /> -->
+                        <!-- <field name="name"/> -->
+                        <field name="bookingg_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_guest_view_list" model="ir.ui.view">
+        <field name="name">hotel.guest.view.list</field>
+        <field name="model">hotel.guest</field>
+        <field name="arch" type="xml">
+            <list>
+                <!-- <field name="name" />
+                <field name="phone" />
+                <field name="id_proof" />
+                <field name="nationality"/> -->
+                <!-- <field name="name" /> -->
+                <field name="bookingg_ids" />
+            </list>
+        </field>
+    </record>
+
+    <!-- <record id="hotel_guest_view_search" model="ir.ui.view">
+        <field name="name">hotel.guest.view.search</field>
+        <field name="model">hotel.guest</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nationality" />
+
+                <filter name="filter_nationality" string="Nationality"
+                    domain="[('nationality', '=', 'India')]" />
+
+
+                <filter name="filter_nationality" string="By Nationality"
+                    context="{'group_by': 'nationality'}" />
+
+            </search>
+        </field>
+    </record>  -->
+
+    <record id="hotel_guest_action" model="ir.actions.act_window">
+        <field name="name">Hotel Guest</field>
+        <field name="res_model">hotel.guest</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="hotel_guest_menu"
+        name="Guest"
+        action="hotel_guest_action"
+        sequence="3" /> -->
+
+</odoo>

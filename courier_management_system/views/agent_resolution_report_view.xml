@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="agent_resolution_report_view_pivot" model="ir.ui.view">
+        <field name="name">agent.resolution.report.view.pivot</field>
+        <field name="model">agent.resolution.report</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="agent_id" type="row" />
+                <field name="complaint_category" type="row"/>
+                <field name="resolved_count" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="agent_resolution_report_view_graph" model="ir.ui.view">
+        <field name="name">agent.resolution.report.view.graph</field>
+        <field name="model">agent.resolution.report</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="agent_id" type="row"/>
+                <field name="complaint_category" type="row"/>
+                <field name="resolved_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+
+    <record id="agent_resolution_report_action" model="ir.actions.act_window">
+        <field name="name">Agent-wise resolution performance</field>
+        <field name="res_model">agent.resolution.report</field>
+        <field name="view_mode">graph,pivot</field>
+    </record>
+
+    <!-- <menuitem
+        id="agent_resolution_report_menu"
+        name="Agent-wise resolution performance"
+        action="agent_resolution_report_action"
+        sequence="1" /> -->
+
+</odoo>

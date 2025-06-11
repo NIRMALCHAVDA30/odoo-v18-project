@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_courier_booking">
+        <t t-foreach="docs" t-as="booking">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align: center; color: #005bab;">Courier Receipt</h2>
+
+                        <h4>
+                            <strong>Receipt No:</strong>
+                            <span t-field="booking.name"/>
+                        </h4>
+                        <p>
+                            <strong>Date:</strong>
+                            <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/>
+                        </p>
+                        <br/>
+
+                        <h4><b>Sender &amp; Receiver Detail</b></h4>
+                        <table border="1" cellpadding="5" cellspacing="0" width="100%">
+                            <tr>
+                                <td width="50%">
+                                    <h5 style="background-color: #005bab; color: white;"><strong>Sender Details:</strong></h5>
+                                    <table width="100%">
+                                        <tr>
+                                            <strong style="padding: 8px;">Name: </strong>
+                                            <span t-field="booking.sender_id.name"/>
+                                        </tr><br/>
+                                        <tr>
+                                            <strong style="padding: 8px;">Address: </strong>
+                                            <span t-field="booking.street"/>
+                                            <t t-if="booking.street2">, <span t-field="booking.street2"/></t>,
+                                            <span t-field="booking.city"/> - <span t-field="booking.zip"/>
+                                        </tr><br />
+                                        <tr>
+                                            <strong style="padding: 8px;">Phone: </strong>
+                                            <span t-field="booking.sender_phone"/>
+                                        </tr><br/>
+                                        <tr>
+                                            <strong style="padding: 8px;">Email: </strong>
+                                            <span t-field="booking.sender_email"/>
+                                        </tr>
+                                    </table>
+                                </td>
+                                
+                                <td width="50%">
+                                    <h5 style="background-color: #005bab; color: white;"><strong>Receiver Details:</strong></h5>
+                                    <table  width="100%">
+                                        <tr>
+                                            <strong style="padding: 8px;">Name: </strong>
+                                            <span t-field="booking.receiver_id.name"/>
+                                        </tr><br/>
+                                        <tr>
+                                            <strong style="padding: 8px;">Address: </strong>
+                                            <span t-field="booking.receiver_street"/>
+                                            <t t-if="booking.receiver_street2">, <span t-field="booking.receiver_street2"/></t>,
+                                            <span t-field="booking.receiver_city"/> - <span t-field="booking.receiver_zip"/>
+                                        </tr><br/>
+                                        <tr>
+                                            <strong style="padding: 8px;">Phone: </strong>
+                                            <span t-field="booking.receiver_phone"/>
+                                        </tr><br/>
+                                        <tr>
+                                            <strong style="padding: 8px;">Email: </strong>
+                                            <span t-field="booking.receiver_email"/>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </table>
+                        <br/>
+
+
+                        <h4><b>Courier Details:</b></h4>
+                        <p><strong>Courier ID: </strong> <span t-field="booking.name"/></p>
+                        <p><strong>Booking Date: </strong> <span t-field="booking.create_date"/></p>
+                        <p><strong>Mode of Shipping: </strong> <span t-field="booking.selected_mode_id.name"/></p>
+                        <p><strong>Delivery Estimate(Days): </strong> <span t-field="booking.delivery_estimate"/></p>
+                        <p><strong>Delivery Type: </strong> <span t-field="booking.selected_mode_id.speed_rank"/></p>
+                        <p><strong>Status: </strong> <span t-field="booking.status"/></p>
+                        <p><strong>Tracking Number: </strong> <span t-field="booking.tracking_id"/></p>
+                        <br />
+
+                        <h4><b>Item Details:</b></h4>
+                        <table border="1" cellpadding="5" cellspacing="0" width="100%">
+                            <thead style="background-color: #005bab; color: white;">
+                                <tr>
+                                    <th><strong>Item Name</strong></th>
+                                    <th><strong>Weight (Kg)</strong></th>
+                                    <th><strong>Rate per Kg (USD)</strong></th>
+                                    <th><strong>Total (USD)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td><span t-field="booking.product_id.name"/></td>
+                                    <td><span t-field="booking.weight"/></td>
+                                    <td><span t-field="booking.price_per_estimeted_cost"/></td>
+                                    <td><span t-field="booking.cost"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/><br/><br/>
+
+                        <h4><b>Charges Summary:</b></h4>
+                        <p><strong>Courier Charges: </strong> <span t-field="booking.cost"/> </p>
+                        <p><strong>Payment Mode: </strong> <span t-field="booking.invoice_id.state" /></p>
+                        <br/>
+
+                        <p>Thank you for choosing our courier service.</p>
+                        <p>For queries, contact: <a href="support@courierservice.com">
+                            support@courierservice.com</a></p>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,48 @@
+<odoo>
+    <record id="maintenance_service_view_form" model="ir.ui.view">
+        <field name="name">maintenance.service.view.form</field>
+        <field name="model">maintenance.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="maintenance_date" />
+                        <field name="staff_id" widget="many2many_tags"/>
+                        <field name="maintenance_type_id" />
+                        <field name="checklist_ids" widget="many2many_tags"/>
+                        <field name="room_id" />
+                        <field name="state" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>  
+
+    <record id="maintenance_service_view_list" model="ir.ui.view">
+        <field name="name">maintenance.service.view.list</field>
+        <field name="model">maintenance.service</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="room_id" />
+                <field name="staff_id" widget="many2many_tags"/>
+                <field name="maintenance_date" />
+                <field name="checklist_ids" widget="many2many_tags"/>
+                <field name="maintenance_type_id" optional="hide"/>
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+
+    <record id="maintenance_service_log_action" model="ir.actions.act_window">
+        <field name="name">Maintenance Service</field>
+        <field name="res_model">maintenance.service</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="maintenance_service_log_menu"
+        name="Maintenance Service"
+        action="maintenance_service_log_action"
+        sequence="1" /> -->
+
+</odoo>

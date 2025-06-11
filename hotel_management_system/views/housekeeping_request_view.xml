@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="housekeeping_request_view_form" model="ir.ui.view">
+        <field name="name">housekeeping.request.view.form</field>
+        <field name="model">housekeeping.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_send_to_housekeeping" type="object" string="Request Sent"
+                        class="btn-primary" invisible="status in ['sent', 'assigned', 'completed']"/>
+                    <field name="status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <h2>
+                            <field name="name" />
+                        </h2>
+                        <field name="room_id" readonly="status in ['sent', 'assigned', 'completed']" />
+                        <field name="description"
+                            readonly="status in ['sent', 'assigned', 'completed']" />
+                        <field name="status" invisible="1" />
+                        <!-- <field name="housekeeping_id" /> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="housekeeping_request_view_list" model="ir.ui.view">
+        <field name="name">housekeeping.request.view.list</field>
+        <field name="model">housekeeping.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="room_id" />
+                <field name="description" />
+                <field name="status" />
+                <!-- <field name="housekeeping_id" /> -->
+            </list>
+        </field>
+    </record>
+
+
+    <record id="housekeeping_request_action" model="ir.actions.act_window">
+        <field name="name">Housekeeping Request</field>
+        <field name="res_model">housekeeping.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="housekeeping_request_menu"
+        name="Housekeeping Request"
+        action="housekeeping_request_action"
+        sequence="3" /> -->
+
+</odoo>

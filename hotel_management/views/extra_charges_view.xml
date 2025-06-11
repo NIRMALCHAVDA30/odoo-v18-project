@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="extra_charges_view_form" model="ir.ui.view">
+        <field name="name">extra.charges.form</field>
+        <field name="model">extra.charges</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="charge_type" />
+                        <field name="amount" />
+                        <field name="description" />
+
+                        <field name="quantity" />
+                        <field name="total_cost" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="extra_charges_view_list" model="ir.ui.view">
+        <field name="name">extra.charges.list</field>
+        <field name="model">extra.charges</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="charge_type" />
+                <field name="amount" />
+
+                <field name="quantity" />
+                <field name="total_cost" />
+            </list>
+        </field>
+    </record>
+
+    <record id="extra_charges_action" model="ir.actions.act_window">
+        <field name="name">Extra Charges</field>
+        <field name="res_model">extra.charges</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="extra_charges_menu"
+        name="Extra Charges"
+        action="extra_charges_action"
+        sequence="4" /> -->
+</odoo> 

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="hotel_menu"
+        name="Hotel"
+        action="hotel_action"
+        sequence="1" />
+
+    <menuitem
+        id="configurations_menuiteam_setting"
+        name="Configurations"
+        parent = "hotel_menu"
+        sequence="4"/>
+
+    <menuitem
+        id="room_menuitem_configurations"
+        name="Room"
+        parent = "configurations_menuiteam_setting"
+        sequence="5" />
+
+    <menuitem
+        id="room_menu"
+        name="Rooms"
+        parent="room_menuitem_configurations"
+        action="room_action"
+        sequence="6" />
+    
+    <menuitem
+        id="room_type_menu"
+        name="Room Types"
+        parent="room_menuitem_configurations"
+        action="room_type_action"
+        sequence="7" />
+
+    <menuitem
+        id="room_price_menu"
+        name="Room Prices"
+        parent="room_menuitem_configurations"
+        action="room_price_action"
+        sequence="8" />
+
+    <menuitem
+        id="room_pricelist_menu"
+        name="Room Pricelists"
+        parent="room_menuitem_configurations"
+        action="room_pricelist_action"
+        sequence="9" /> 
+
+    <menuitem
+        id="room_specifications_menu"
+        name="Room Specifications"
+        parent="room_menuitem_configurations"
+        action="room_specifications_action"
+        sequence="10" />
+    
+    <menuitem
+        id="room_season_menu"
+        name="Room Seasons"
+        parent="room_menuitem_configurations"
+        action="room_season_action"
+        sequence="11" />
+
+    <menuitem
+        id="hotel_menuitem_configurations"
+        name="Hotel"
+        parent = "configurations_menuiteam_setting"
+        sequence="12" />
+
+    <menuitem
+        id="hotel_amenities_menu"
+        name="Hotel Amenities"
+        parent="hotel_menuitem_configurations"
+        action="hotel_amenities_action"
+        sequence="13" />
+
+    <menuitem
+        id="hotel_service_menu"
+        name="Hotel Services"
+        parent="hotel_menuitem_configurations"
+        action="hotel_service_action"
+        sequence="14" />
+    
+    <menuitem
+        id="hotel_policy_menu"
+        name="Hotel Policies"
+        parent="hotel_menuitem_configurations"
+        action="hotel_policy_action"
+        sequence="15" />
+
+    <menuitem
+        id="hotel_configurations_menu"
+        name="Hotels"
+        parent="hotel_menuitem_configurations"
+        action="hotel_configurations_action"
+        sequence="16" />
+
+    <menuitem
+        id="hotel_booking_menu"
+        name="Bookings"
+        parent="hotel_menu"
+        action="hotel_booking_action"
+        sequence="2" />
+
+    <!-- <menuitem
+        id="guest_menuitem_configurations"
+        name="Guest"
+        parent = "configurations_menuiteam_setting"
+        sequence="16" /> -->
+
+    <menuitem
+        id="hotel_guest_menu"
+        name="Guests"
+        parent="hotel_menu"
+        action="hotel_room_guest_action"
+        sequence="3" />
+    
+    <menuitem
+        id="booking_menuitem_configurations"
+        name="Booking"
+        parent = "configurations_menuiteam_setting"
+        sequence="17" />
+
+    <menuitem
+        id="booking_room_line_menu"
+        name="Booking Room Lines"
+        parent="booking_menuitem_configurations"
+        action="booking_room_line_action"
+        sequence="18" />
+
+    <menuitem
+        id="housekeeping_menuitem_configurations"
+        name="Housekeeping"
+        parent = "configurations_menuiteam_setting"
+        sequence="19" />
+
+    <menuitem
+        id="staff_menu"
+        name="Staff"
+        parent="housekeeping_menuitem_configurations"
+        action="staff_action"
+        sequence="20" />
+
+    <menuitem
+        id="maintenance_type_menu"
+        name="Maintenance Types"
+        parent="housekeeping_menuitem_configurations"
+        action="maintenance_type_action"
+        sequence="21" />
+
+    <menuitem
+        id="planning_menu"
+        name="Planning"
+        parent="housekeeping_menuitem_configurations"
+        action="planning_action"
+        sequence="22" />
+
+    <menuitem
+        id="staff_log_menu"
+        name="Staff Check-in / Check-out"
+        parent="housekeeping_menuitem_configurations"
+        action="staff_log_action"
+        sequence="23" />
+
+    <menuitem
+        id="maintenance_service_log_menu"
+        name="Maintenance Services"
+        parent="housekeeping_menuitem_configurations"
+        action="maintenance_service_log_action"
+        sequence="24" />
+
+    <menuitem
+        id="housekeeping_checklist_menu"
+        name="Housekeeping Checklist"
+        parent="housekeeping_menuitem_configurations"
+        action="housekeeping_checklist_action"
+        sequence="25" />
+
+    <menuitem
+        id="report_menuitem_configurations"
+        name="Report"
+        parent = "configurations_menuiteam_setting"
+        sequence="26" />
+
+    <menuitem
+        id="report_issue_menu"
+        name="Report Issues"
+        parent="report_menuitem_configurations"
+        action="report_issue_action"
+        sequence="27" />
+
+    <menuitem
+        id="report_issue_show_menu"
+        name="Report Issue Show"
+        parent="report_menuitem_configurations"
+        action="report_issue_show_action"
+        sequence="28" />
+
+    <menuitem
+        id="restaurant_menuitem_configurations"
+        name="Restaurant"
+        parent = "configurations_menuiteam_setting"
+        sequence="29" />
+
+    <menuitem
+        id="restaurant_issue_menu"
+        name="Restraunt"
+        parent="restaurant_menuitem_configurations"
+        action="restaurant_issue_action"
+        sequence="30" />
+
+    <menuitem
+        id="restraunt_food_menu"
+        name="Restraunt Foods"
+        parent="restaurant_menuitem_configurations"
+        action="restraunt_food_action"
+        sequence="31" />
+
+    <menuitem
+        id="restraunt_order_menu"
+        name="Restraunt Order"
+        parent="restaurant_menuitem_configurations"
+        action="restraunt_order_action"
+        sequence="32" />
+
+</odoo>

@@ -1,0 +1,44 @@
+<odoo>
+    <record id="planning_view_form" model="ir.ui.view">
+        <field name="name">planning.view.form</field>
+        <field name="model">planning</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="staff_id" />
+                        <field name="maintenance_type_id" />
+                        <field name="room_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="planning_view_list" model="ir.ui.view">
+        <field name="name">planning.view.list</field>
+        <field name="model">planning</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="staff_id" />
+                <field name="maintenance_type_id" />
+                <field name="room_ids" />
+            </list>
+        </field>
+    </record>
+
+    <record id="planning_action" model="ir.actions.act_window">
+        <field name="name">Planning</field>
+        <field name="res_model">planning</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="planning_menu"
+        name="Planning"
+        action="planning_action"
+        sequence="1" /> -->
+
+</odoo>

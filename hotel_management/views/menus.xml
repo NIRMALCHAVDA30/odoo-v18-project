@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="hotel_management_menu"
+        name="Hotel Management"
+        action="hotel_management_action"
+        sequence="1" />
+
+    <menuitem
+        id="room_menu"
+        name="Room"
+        parent="hotel_management_menu"
+        action="room_action"
+        sequence="2" />
+
+    <menuitem
+        id="guest_menu"
+        name="Guest"
+        parent = "hotel_management_menu"
+        action="guest_action"
+        sequence="3"/>
+
+    <menuitem
+        id="booking_menu"
+        name="Booking"
+        parent="hotel_management_menu"
+        action="booking_action"
+        sequence="4" />
+
+    <menuitem
+        id="charges_menu"
+        name="Charges"
+        parent = "hotel_management_menu"
+        action="extra_charges_action"
+        sequence="5"/>
+
+    <menuitem
+        id="hotel_management_setting"
+        name="Setting"
+        parent = "hotel_management_menu"
+        sequence="6"/>
+
+    
+
+    <!-- <menuitem
+        id="room_menu"
+        name="Room"
+        parent="hotel_management_setting"
+        action="room_action"
+        sequence="6" /> -->
+
+    <menuitem
+        id="book_room_wizard_menu"
+        name="Book Room Wizard"
+        parent="hotel_management_setting"
+        action="book_room_wizard_action"
+        sequence="7" />
+
+</odoo>

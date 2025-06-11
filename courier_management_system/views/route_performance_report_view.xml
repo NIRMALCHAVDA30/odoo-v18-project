@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="route_performance_report_view_pivot" model="ir.ui.view">
+        <field name="name">route.performance.report.view.pivot</field>
+        <field name="model">route.performance.report</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="route_id" type="row"/>
+                <field name="total_bookings" type="measure"/>
+                <field name="avg_delivery_days" type="measure"/>
+                <field name="total_weight" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="route_performance_report_view_graph" model="ir.ui.view">
+        <field name="name">route.performance.report.view.graph</field>
+        <field name="model">route.performance.report</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="route_id" type="row"/>
+                <field name="total_bookings" type="measure"/>
+                <field name="avg_delivery_days" type="measure"/>
+                <field name="total_weight" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="route_performance_report_view_list" model="ir.ui.view">
+        <field name="name">route.performance.report.view.list</field>
+        <field name="model">route.performance.report</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="route_id"/>
+                <field name="total_bookings"/>
+                <field name="avg_delivery_days" />
+                <field name="total_weight" />
+                <field name="total_cost"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="route_performance_report_view_action" model="ir.actions.act_window">
+        <field name="name">Route performance</field>
+        <field name="res_model">route.performance.report</field>
+        <field name="view_mode">graph,pivot,list</field>
+    </record>
+
+    <!-- <menuitem
+        id="courier_booking_route_report_menu"
+        name="Route performance"
+        action="courier_booking_route_report_view_action"
+        sequence="1" /> -->
+
+</odoo>

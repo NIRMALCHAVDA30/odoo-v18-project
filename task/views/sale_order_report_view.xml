@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Task 5 -->
+    <template id="report_saleorder_inherit" inherit_id="sale.report_saleorder_document">
+
+        <xpath expr="//t[@t-set='lines_to_report']" position="after">
+            <t t-set="taxes" t-value="any(record.tax_id for record in lines_to_report)" />
+        </xpath>
+
+        <xpath expr="//th[@name='th_taxes']" position="attributes">
+            <attribute name="t-if">taxes</attribute>
+        </xpath>
+
+        <xpath expr="//td[@name='td_taxes']" position="attributes">
+            <attribute name="t-if">taxes</attribute>
+        </xpath>
+
+    </template>
+
+
+    <!-- Task 9 -->
+    <template id="report_saleorder_inherit_country" inherit_id="sale.report_saleorder_document">
+
+        <xpath expr="//div[@t-if='doc.user_id.name']" position="after">
+            <div class="col" t-if="doc.is_invisible">
+                <strong>Country Of Origin</strong>
+                <div t-field="doc.country_of_origin" />
+            </div>
+        </xpath>
+
+    </template>
+
+
+</odoo>

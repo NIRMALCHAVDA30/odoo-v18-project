@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Create the group boolean -->
+    <record id="max_min" model="res.groups">
+        <field name="name">Max Min</field>
+        <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+
+
+</odoo>

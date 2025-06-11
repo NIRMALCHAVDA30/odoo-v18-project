@@ -1,0 +1,69 @@
+<odoo>
+    <record id="room_pricelist_view_form" model="ir.ui.view">
+        <field name="name">room.pricelist.view.form</field>
+        <field name="model">room.pricelist</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <group>
+                            <field name="price_id" />
+                            <field name="hotel_id" invisible="1"/>
+                            <!-- <field name="room_id" /> -->
+                            <field name="room_type_id" />
+                            <field name="price_type" widget="radio" options="{'horizontal': True}"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="base_price" />
+                        <field name="total_price" />
+                        <field name="valid_from" />
+                        <field name="valid_to" />
+                    </group>
+
+                    <group>
+                        <group invisible="price_type != 'season'">
+                            <field name="season_id" />
+                            <field name="increase_price" />
+                        </group>
+
+                        <group invisible="price_type != 'discount'">
+                            <field name="discount_type" widget="radio" options="{'horizontal': True}"/>
+                            <field name="fixed_price" invisible="discount_type != 'fixed'" />
+                            <field name="percent_price" invisible="discount_type != 'percentage'" />
+                        </group>
+                    </group>
+
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="room_pricelist_view_list" model="ir.ui.view">
+        <field name="name">room.pricelist.view.list</field>
+        <field name="model">room.pricelist</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="room_type_id" />
+                <field name="price_type" />
+                <field name="base_price" />
+                <field name="total_price" />
+                <field name="valid_from" />
+                <field name="valid_to" />         
+            </list>
+        </field>
+    </record>
+
+    <record id="room_pricelist_action" model="ir.actions.act_window">
+        <field name="name">Room Pricelist</field>
+        <field name="res_model">room.pricelist</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="room_pricelist_menu"
+        name="Room Pricelist"
+        action="room_pricelist_action"
+        sequence="1" /> -->
+</odoo>

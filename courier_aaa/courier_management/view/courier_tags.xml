@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="courier_management_tags_form_view" model="ir.ui.view">
+        <field name="name">Tags</field>
+        <field name="model">courier.tags</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="name" required="1" placeholder="e.g Courier Tags" options="{'color_field': 'color'}" /> 
+                    </h1>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="courier_management_tags_list_view" model="ir.ui.view">
+        <field name="name">Tags</field>
+        <field name="model">courier.tags</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="color" widget="handle" />
+                <field name="name"   options="{'color_field': 'color'}" />
+            </list>
+        </field>
+    </record>
+    <record id="courier_management_tags_action_id" model="ir.actions.act_window">
+        <field name="name">Courier Management</field>
+        <field name="res_model">courier.tags</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

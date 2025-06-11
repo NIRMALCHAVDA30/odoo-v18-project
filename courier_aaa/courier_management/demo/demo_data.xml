@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="courier_tag_1" model="courier.tags">
+            <field name="name">Fragile</field>
+            <field name="color">3</field>
+        </record>
+
+        <record id="courier_tag_2" model="courier.tags">
+            <field name="name">Express</field>
+            <field name="color">4</field>
+        </record>
+
+        <record id="courier_tag_3" model="courier.tags">
+            <field name="name">Heavy</field>
+            <field name="color">2</field>
+        </record>
+
+        <record id="courier_tag_4" model="courier.tags">
+            <field name="name">Perishable</field>
+            <field name="color">5</field>
+        </record>
+
+        <record id="product_template_product_1" model="product.product">
+            <field name="name">Glass Table</field>
+            <field name="type">consu</field>
+        </record>
+        <record id="product_template_product_2" model="product.product">
+            <field name="name">Wooden Chair</field>
+            <field name="type">consu</field>
+        </record>
+        <record id="product_template_product_3" model="product.product">
+            <field name="name">Crystal Horse</field>
+            <field name="type">consu</field>
+        </record>
+        <record id="product_template_product_4" model="product.product">
+            <field name="name">Macbook Air</field>
+            <field name="type">consu</field>
+        </record>
+        <record id="product_template_product_5" model="product.product">
+            <field name="name">Desi Ghee</field>
+            <field name="type">consu</field>
+        </record>
+
+
+        <record id="courier_tag_5" model="courier.tags">
+            <field name="name">Document</field>
+            <field name="color">7</field>
+        </record>
+        <record id="shipping_mode_air" model="shipping.mode">
+            <field name="name">Air</field>
+            <field name="speed_rank">fastest</field>
+        </record>
+        <record id="shipping_mode_road" model="shipping.mode">
+            <field name="name">Road</field>
+            <field name="speed_rank">balanced</field>
+        </record>
+        <record id="shipping_mode_ship" model="shipping.mode">
+            <field name="name">Ship</field>
+            <field name="speed_rank">cheapest</field>
+        </record>
+
+        <record id="shipping_route_mumbai_delhi" model="shipping.route">
+            <field name="source_city">Mumbai</field>
+            <field name="destination_city">Delhi</field>
+            <field name="distance_km">1400</field>
+        </record>
+        <record id="shipping_route_pbr_ahm" model="shipping.route">
+            <field name="source_city">Porbandar</field>
+            <field name="destination_city">Ahmedabad</field>
+            <field name="distance_km">410</field>
+        </record>
+        <record id="shipping_route_pbr_diu" model="shipping.route">
+            <field name="source_city">Porbandar</field>
+            <field name="destination_city">Diu</field>
+            <field name="distance_km">210</field>
+        </record>
+        <record id="shipping_route_pbr_jam" model="shipping.route">
+            <field name="source_city">Porbandar</field>
+            <field name="destination_city">Jamanagar</field>
+            <field name="distance_km">130</field>
+        </record>
+        <record id="shipping_route_pbr_daman" model="shipping.route">
+            <field name="source_city">Porbandar</field>
+            <field name="destination_city">Daman</field>
+            <field name="distance_km">610</field>
+        </record>
+
+        <record id="shipping_route_pahal_pbr" model="shipping.route">
+            <field name="source_city">Porbandar</field>
+            <field name="destination_city">Pahalgam</field>
+            <field name="distance_km">1340</field>
+        </record>
+
+        <record id="shipping_route_chennai_kolkata" model="shipping.route">
+            <field name="source_city">Chennai</field>
+            <field name="destination_city">Kolkata</field>
+            <field name="distance_km">1670</field>
+        </record>
+        <record id="shipping_route_bangalore_hyderabad" model="shipping.route">
+            <field name="source_city">Bangalore</field>
+            <field name="destination_city">Hyderabad</field>
+            <field name="distance_km">570</field>
+        </record>
+
+        <record id="route_line_pbr_diu_air" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_diu"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">50</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_phl_air" model="route.line">
+            <field name="route_id" ref="shipping_route_pahal_pbr"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">112</field>
+            <field name="estimated_days">2</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_phl_road" model="route.line">
+            <field name="route_id" ref="shipping_route_pahal_pbr"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">81</field>
+            <field name="estimated_days">4</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_dmn_air" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_daman"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">78</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_dmn_road" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_daman"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">48</field>
+            <field name="estimated_days">2</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_dmn_ship" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_daman"/>
+            <field name="mode_id" ref="shipping_mode_ship"/>
+            <field name="cost_per_kg">28</field>
+            <field name="estimated_days">5</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_jam_air" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_jam"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">67</field>
+            <field name="estimated_days">2</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_jam_air2" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_jam"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">89</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_jam_road" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_jam"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">40</field>
+            <field name="estimated_days">3</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_jam_road2" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_jam"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">32</field>
+            <field name="estimated_days">4</field>
+            <field name="is_active">1</field>
+        </record>
+
+        <record id="route_line_pbr_diu_road" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_diu"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">40</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+
+        <record id="route_line_pbr_diu_ship" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_diu"/>
+            <field name="mode_id" ref="shipping_mode_ship"/>
+            <field name="cost_per_kg">20</field>
+            <field name="estimated_days">4</field>
+            <field name="is_active">1</field>
+        </record>
+
+        <record id="route_line_ban_hy_air" model="route.line">
+            <field name="route_id" ref="shipping_route_bangalore_hyderabad"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">50</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_ban_hy_air" model="route.line">
+            <field name="route_id" ref="shipping_route_bangalore_hyderabad"/>
+            <field name="mode_id" ref="shipping_mode_ship"/>
+            <field name="cost_per_kg">30</field>
+            <field name="estimated_days">5</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_mumbai_delhi_air" model="route.line">
+            <field name="route_id" ref="shipping_route_mumbai_delhi"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">50</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_ahm_air" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_ahm"/>
+            <field name="mode_id" ref="shipping_mode_air"/>
+            <field name="cost_per_kg">80</field>
+            <field name="estimated_days">1</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_ahm_road" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_ahm"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">50</field>
+            <field name="estimated_days">2</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_pbr_ahm_ship" model="route.line">
+            <field name="route_id" ref="shipping_route_pbr_ahm"/>
+            <field name="mode_id" ref="shipping_mode_ship"/>
+            <field name="cost_per_kg">30</field>
+            <field name="estimated_days">4</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_mumbai_delhi_road" model="route.line">
+            <field name="route_id" ref="shipping_route_mumbai_delhi"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">30</field>
+            <field name="estimated_days">3</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_chennai_kolkata_ship" model="route.line">
+            <field name="route_id" ref="shipping_route_chennai_kolkata"/>
+            <field name="mode_id" ref="shipping_mode_ship"/>
+            <field name="cost_per_kg">20</field>
+            <field name="estimated_days">6</field>
+            <field name="is_active">1</field>
+        </record>
+        <record id="route_line_bangalore_hyderabad_road" model="route.line">
+            <field name="route_id" ref="shipping_route_bangalore_hyderabad"/>
+            <field name="mode_id" ref="shipping_mode_road"/>
+            <field name="cost_per_kg">25</field>
+            <field name="estimated_days">2</field>
+            <field name="is_active">1</field>
+        </record>
+    </data>
+</odoo>

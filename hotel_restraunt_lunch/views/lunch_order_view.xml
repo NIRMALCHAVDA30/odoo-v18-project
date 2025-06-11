@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_lunch_order_form_inherit" model="ir.ui.view">
+        <field name="name">lunch.order.form.inherit</field>
+        <field name="model">lunch.order</field>
+        <field name="inherit_id" ref="lunch.lunch_order_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='note']" position="inside">
+                <field name="user_id"/>
+                <field name="lunch_location_id"/>
+            </xpath>
+            <!-- <xpath expr="//sheet" position="inside">  
+                <group>
+                    <field name="order_history_ids">
+                        <list editable="bottom">
+                            <field name="state"/>
+                            <field name="description"/>
+                            <field name="timestamp"/>
+                        </list>
+                    </field>
+                </group>
+            </xpath> -->
+        </field>
+    </record>
+</odoo>

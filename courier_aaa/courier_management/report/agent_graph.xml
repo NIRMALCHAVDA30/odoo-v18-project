@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="courier_booking_report_agent_pivot" model="ir.ui.view">
+        <field name="name">courier.booking.report.agent.pivot</field>
+        <field name="model">report.agent</field>
+        <field name="arch" type="xml">
+            <pivot string="Agent Wise Performance" sample="1">
+                <field name="complaint_category" type="col"/>
+                <field name="agent_id" type="row"/>
+                <field name="count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="courier_booking_report_agent_graph" model="ir.ui.view">
+        <field name="name">courier.booking.report.agent.graph</field>
+        <field name="model">report.agent</field>
+        <field name="arch" type="xml">
+            <graph string="Agent Wise Performance" type='bar' sample="1">
+                <field name="agent_id" type="row"/>
+                <field name="complaint_category" type="row"/>
+            </graph>
+        </field>
+    </record>
+    <!-- <record id="view_report_agent_list" model="ir.ui.view">
+        <field name="name">report.agent.tree</field>
+        <field name="model">report.agent</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" editable="false">
+                <field name="agent_id"/>
+                <field name="complaint_category"/>
+                <field name="count"/>
+            </list>
+        </field>
+    </record> -->
+
+
+
+    <record id='dashboard_report_agent_view_action' model='ir.actions.act_window'>
+        <field name="name">Agent Wise Performance</field>
+        <field name="res_model">report.agent</field>
+        <field name='view_mode'>graph,pivot</field>
+    </record>
+</odoo>

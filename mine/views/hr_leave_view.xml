@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_leave_view_not_aprroved_refused" model="ir.ui.view">
+        <field name="name">hr.leave.view.not.aprroved.refused</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <button name="leave_request" type="object" class="btn-outline-primary"
+                        string="Leave" />
+                        
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="courier_booking_complaint_pivot_view" model="ir.ui.view">
+        <field name="name">courier.booking.complaint.pivot.view</field>
+        <field name="model">report.complaints</field>
+        <field name="arch" type="xml">
+            <pivot string="Open/Closed Complaints" sample="1">
+                <field name="complaint_category" type="col"/>
+                <field name="status" type="row"/>
+                <field name="count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="courier_booking_complaint_graph" model="ir.ui.view">
+        <field name="name">courier.booking.complaint.graph</field>
+        <field name="model">report.complaints</field>
+        <field name="arch" type="xml">
+            <graph string="Open/Closed Complaints" type='line' sample="1">
+                <field name="status" type="row"/>
+                <field name="complaint_category" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id='report_complaint_status_new_view_action' model='ir.actions.act_window'>
+        <field name="name">Open/Closed Complaints</field>
+        <field name="res_model">report.complaints</field>
+        <field name='view_mode'>graph,pivot</field>
+    </record>
+</odoo>

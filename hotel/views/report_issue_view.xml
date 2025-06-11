@@ -1,0 +1,71 @@
+<odoo>
+    <record id="report_issue_view_form" model="ir.ui.view">
+        <field name="name">report.issue.view.form</field>
+        <field name="model">report.issue</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="hotel_id" />
+                        <field name="room_id" />
+                        <field name="guest_id" />
+                        <field name="issue_description" />
+                        <field name="staff_id" invisible="status in ['draft', 'in_progress']" />
+                        <field name="solution" invisible="status in ['draft', 'in_progress']" />
+
+
+                        <!-- <footer> -->
+                        <button name="action_send_report"
+                            type="object"
+                            string="Send Report"
+                            class="btn-primary"
+                            invisible="status != 'draft'" />
+
+                        <button name="action_resolved"
+                            type="object"
+                            string="Resolved"
+                            class="btn-success"
+                            invisible="status != 'in_progress'" />
+                        <!-- </footer> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="report_issue_view_list" model="ir.ui.view">
+        <field name="name">report.issue.view.list</field>
+        <field name="model">report.issue</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="hotel_id" />
+                <field name="room_id" />
+                <field name="guest_id" />
+                <field name="issue_description" />
+                <field name="staff_id" />
+                <field name="solution" />
+                <field name="status" />
+            </list>
+        </field>
+    </record>
+
+    <record id="report_issue_action" model="ir.actions.act_window">
+        <field name="name">Report Issue</field>
+        <field name="res_model">report.issue</field>
+        <field name="view_ids"
+                eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'form', 'view_id': ref('report_issue_view_form')})]"/>
+        <!-- <field name="view_mode">form</field> -->
+        <field name="target">new</field>
+    </record>
+
+    <!-- <menuitem
+        id="report_issue_menu"
+        name="Report Issue"
+        action="report_issue_action"
+        sequence="1" /> -->
+
+</odoo>

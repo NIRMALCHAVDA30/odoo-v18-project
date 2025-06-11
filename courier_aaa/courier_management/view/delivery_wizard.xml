@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="courier_assign_agent_form_view_id" model="ir.ui.view">
+        <field name="name">Delivery Agent</field>
+        <field name="model">wizard.agent</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="agent_id" create="0" required="1"  options="{'no_create': True, 'no_open': True}" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_set_agent" string="Assign" type="object" class="btn btn-primary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="courier_assign_agent_action_id" model="ir.actions.act_window">
+        <field name="name">Delivery Agent</field>
+        <field name="res_model">wizard.agent</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>

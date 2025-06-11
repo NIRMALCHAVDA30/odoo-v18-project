@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="courier_booking_report_types_pivot" model="ir.ui.view">
+        <field name="name">courier.booking.report.types.pivot</field>
+        <field name="model">report.complaints</field>
+        <field name="arch" type="xml">
+            <pivot string="Overview Complaints based on Categories" sample="1">
+                <field name="complaint_category" type="row"/>
+                <field name="status" type="col"/>
+                <field name="count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="courier_booking_report_type_graph" model="ir.ui.view">
+        <field name="name">courier.booking.report.type.graph</field>
+        <field name="model">report.complaints</field>
+        <field name="arch" type="xml">
+            <graph string="Overview Complaints based on Categories" type='bar' sample="1">
+                <field name="complaint_category" type="row"/>
+                <field name="status" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id='dashboard_report_types_view_action' model='ir.actions.act_window'>
+        <field name="name">Category Based Complaints</field>
+        <field name="res_model">report.complaints</field>
+        <field name='view_mode'>graph,pivot</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'graph', 'view_id':ref('courier_booking_report_type_graph')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('courier_booking_report_types_pivot')})]" />
+    </record>
+</odoo>

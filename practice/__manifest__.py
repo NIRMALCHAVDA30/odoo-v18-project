@@ -1,0 +1,23 @@
+{
+    'name': 'Practice',
+    'version': '18.0.1.0',
+    'summary': 'This is practice odoo',
+    # 'sequence': 10,
+    'description': """    """,
+    # 'category': 'Accounting/Accounting',
+    'website': 'https://www.odoo.com/app/invoicing',
+    'depends': ['base','sale_management','purchase','account'],
+    'data': [
+        "security/ir.model.access.csv",
+        "views/product_template_view.xml",
+        "views/sale_order_view.xml",
+        "views/res_users_view.xml",
+        "views/purchase_order_view.xml",
+        "views/purchase_advance_payment_view.xml",
+        "views/account_payment.xml",
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

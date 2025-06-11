@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="customer_complaint_view_form" model="ir.ui.view">
+        <field name="name">customer.complaint.view.form</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="booking_id" />
+                        <field name="complaint_category" />
+                        <field name="description" />
+                        <field name="attachment" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="customer_complaint_view_list" model="ir.ui.view">
+        <field name="name">customer.complaint.view.list</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="booking_id" />
+                <field name="complaint_category" />
+                <field name="description" />
+                <field name="attachment" />
+                <field name="ticket_number" />
+                <field name="assigned_to" />
+                <field name="status" />
+                <field name="priority" />
+                <field name="resolution_deadline" />
+                <field name="internal_notes" />
+            </list>
+        </field>
+    </record> -->
+
+    <record id="customer_complaint_action" model="ir.actions.act_window">
+        <field name="name">Customer Complaint</field>
+        <field name="res_model">customer.complaint</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'form', 'view_id': ref('customer_complaint_view_form')})]" />
+        <field name="target">new</field>
+    </record>
+
+    <!-- <menuitem
+        id="customer_complaint_menu"
+        name="Customer Complaint"
+        action="customer_complaint_action"
+        sequence="3" /> -->
+
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="hotel_management_menu"
+        name="Hotel Management System"
+        action="hotel_management_action"
+        sequence="1" />
+
+    <menuitem
+        id="hotel_room_menu"
+        name="Room"
+        parent="hotel_management_menu"
+        action="hotel_room_action"
+        sequence="2" />
+
+    <menuitem
+        id="hotel_guest_menu"
+        name="Guest History"
+        parent = "hotel_management_menu"
+        action="hotel_guest_action"
+        sequence="3"/>
+
+    <menuitem
+        id="booking_menu"
+        name="Reservation"
+        parent="hotel_management_menu"
+        action="hotel_reservation_action"
+        sequence="4" />
+
+    <menuitem
+        id="charges_menu"
+        name="Charges"
+        parent = "hotel_management_menu"
+        action="extra_charges_action"
+        sequence="5"/>
+
+    <menuitem
+        id="housekeeping_request_menu"
+        name="Housekeeping Request"
+        parent = "hotel_management_menu"
+        action="housekeeping_request_action"
+        sequence="6" />
+
+</odoo>

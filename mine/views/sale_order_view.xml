@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_custom" model="ir.ui.view">
+        <field name="name">sale.order.form.category.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_show_category_orders"
+                        type="object"
+                        string="Category Orders"
+                        class="btn-primary"/>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="salespeople_with_no_sales_this_month"
+                        type="object"
+                        string="Salespeople"
+                        class="btn-danger"/>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="cancel_sale_order"
+                        type="object"
+                        string="Cancel Sale Order"
+                        class="btn btn-success"/>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="discount_greater_than_20"
+                        type="object"
+                        string="Sale order discount"
+                        class="btn btn-warning"/>
+            </xpath>
+        </field>
+    </record>
+    
+
+</odoo>

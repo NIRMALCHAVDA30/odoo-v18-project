@@ -1,0 +1,20 @@
+{
+    'name': 'Cancel Reason',
+    'version': '18.0.1.0',
+    'summary': 'This is Cancel Reason App odoo',
+    # 'sequence': 10,
+    'description': """    """,
+    # 'category': 'Accounting/Accounting',
+    'website': 'https://www.odoo.com/app/invoicing',
+    'depends': ['base','sale_management','account'],
+    'data': [
+        "security/ir.model.access.csv",
+        "views/sale_order_view.xml",
+        "views/sale_cancel_reason_view.xml",
+        "views/sale_cancel_wizard_view.xml",
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

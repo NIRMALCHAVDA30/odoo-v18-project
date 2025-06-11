@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="courier_delivery_wizard_form_view" model="ir.ui.view">
+        <field name="name">Delivery Details</field>
+        <field name="model">courier.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="reciever_id" required="1" options="{'no_create': True, 'no_open': True}" create="0"  />
+                        <field name="rating" widget="priority"  />
+                        <field name="delivery_proof" widget="signature"/>
+                        <field name="delivery_notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="courier_assign_agent_action_id" model="ir.actions.act_window">
+        <field name="name">Delivery Details</field>
+        <field name="res_model">courier.booking</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>

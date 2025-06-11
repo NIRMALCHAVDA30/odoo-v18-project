@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="hotel_housekeeping_menu"
+        name="Housekeeping"
+        parent="hotel_management_system.hotel_management_menu"
+        action="hotel_housekeeping_action"
+        sequence="10" />
+
+</odoo>

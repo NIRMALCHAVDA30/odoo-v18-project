@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="purchase_order_view_top_5_customer" model="ir.ui.view">
+        <field name="name">purchase.order.view.top.5.customer</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="top_5_customers_last_6_months"
+                        type="object"
+                        string="Top 5 Customer"
+                        class="btn-danger"/>
+            
+            </xpath>
+        </field>
+    </record>
+</odoo>

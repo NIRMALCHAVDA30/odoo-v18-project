@@ -1,0 +1,79 @@
+<odoo>
+    <record id="customer_complaint_show_view_form" model="ir.ui.view">
+        <field name="name">customer.complaint.show.view.form</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_resolve" type="object" string="Resolve" class="btn-primary"
+                        invisible="status in ['closed','resolved']" 
+                        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent"/>
+                    <button name="action_close" type="object" string="Close" class="btn-danger"
+                        invisible="status in ['closed']" 
+                        groups="courier_management_system.group_cms_admin,courier_management_system.group_cms_employee,courier_management_system.group_cms_delivery_agent"/>
+                </header>
+
+                <sheet>
+                    <widget name="web_ribbon" title="Open" invisible="status != 'open'" />
+                    <widget name="web_ribbon" title="In Progress" invisible="status != 'in_progress'" />
+                    <widget name="web_ribbon" title="Resolved" invisible="status != 'resolved'" />
+                    <widget name="web_ribbon" title="Closed" invisible="status != 'closed'" bg_color="text-bg-danger"/>
+                
+                    <group>
+                        <field name="booking_id" readonly="True" />
+                        <field name="complaint_category" readonly="True" />
+                        <field name="description" readonly="True" />
+                        <field name="attachment" readonly="True" />
+
+                        <field name="ticket_number" readonly="True" />
+                        <field name="assigned_to" readonly="status in ['resolved' , 'closed']" />
+                        <field name="priority" readonly="status in ['resolved' , 'closed']" />
+                        <field name="resolution_deadline"
+                            readonly="status in ['resolved' , 'closed']" />
+                        <field name="internal_notes" readonly="status in ['resolved' , 'closed']" />
+
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_complaint_show_view_list" model="ir.ui.view">
+        <field name="name">customer.complaint.show.view.list</field>
+        <field name="model">customer.complaint</field>
+        <field name="arch" type="xml">
+            <list create="0">
+                <field name="booking_id" decoration-bf="1"/>
+                <field name="complaint_category" />
+                <field name="description" />
+                <field name="attachment" />
+                <field name="ticket_number" />
+                <field name="assigned_to" />
+
+                <field name="priority" />
+                <field name="resolution_deadline" />
+                <field name="status" />
+            </list>
+        </field>
+    </record>
+
+
+
+    <record id="customer_complaint_show_action" model="ir.actions.act_window">
+        <field name="name">Show Customer Complaints</field>
+        <field name="res_model">customer.complaint</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'list', 'view_id': ref('customer_complaint_show_view_list')}),
+                        (0, 0, {'view_mode': 'form', 'view_id': ref('customer_complaint_show_view_form')})]" />
+        <!-- <field name="view_mode">list,form</field> -->
+    </record>
+
+    <!-- <menuitem
+        id="customer_complaint_show_menu"
+        name="Customer Complaints"
+        action="customer_complaint_show_action"
+        sequence="1" /> -->
+
+</odoo>

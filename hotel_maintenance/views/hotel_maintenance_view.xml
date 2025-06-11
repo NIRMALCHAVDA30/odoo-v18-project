@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_maintenance_view_form" model="ir.ui.view">
+        <field name="name">hotel.maintenance.view.form</field>
+        <field name="model">hotel.maintenance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <h2>
+                        <field name="name" />
+                    </h2>
+                    <group string="maintenance request">
+                        <field name="requested_id" readonly="1" />
+                        <field name="room_id" readonly="1" />
+                        <field name="maintenance_descriptionn" readonly="1" />
+                    </group>
+
+                    <group string="Assign Employee and Planned">
+                        <group>
+                            <field name="employee_id" />
+                            <field name="status" invisible="1" />
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <group>
+                                <field name="planned_start_date" />
+                                <field name="planned_end_date" />
+                                <field name="total_time" />
+                            </group>
+                            <group>
+                                <field name="start_time" readonly="1" />
+                                <field name="end_time" readonly="1" />
+                                <field name="actual_time" />
+                            </group>
+                        </group>
+                    </group>
+
+                    <group string="Reseloved Issue">
+                        <field name="issue_description" placeholder="Write Reseloved Issue..."/>
+                        <button name="mark_in_progress" type="object" string="Mark In Progress"
+                            class="btn-primary" invisible="status in ['closed']" />
+                        <button name="mark_done" type="object" string="Done Request"
+                            class="btn-success" invisible="status in ['closed']" />
+                    </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_maintenance_view_list" model="ir.ui.view">
+        <field name="name">hotel.maintenance.view.list</field>
+        <field name="model">hotel.maintenance</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="requested_id" readonly="1" />
+                <field name="room_id" readonly="1" />
+                <field name="maintenance_descriptionn" readonly="1" />
+                <field name="employee_id" />
+                <field name="status" />
+                <field name="issue_description" />
+            </list>
+        </field>
+    </record>
+
+
+    <record id="hotel_maintenance_action" model="ir.actions.act_window">
+        <field name="name">Hotel Maintenance</field>
+        <field name="res_model">hotel.maintenance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="hotel_maintenance_menu"
+        name="Maintenance"
+        parent="hotel_management_system.hotel_management_menu"
+        action="hotel_maintenance_action"
+        sequence="11" />
+
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_reservation_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="booking">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Hotel Booking Report</h2>
+                        <p><strong>Guest Name: </strong><span t-field="booking.guest_id.name" /></p>
+                        <p><strong>Hotel: </strong><t t-out="booking.hotel_id.name"/></p>
+                        <p><strong>Room Number: </strong><t t-out="booking.room_id.name"/></p>
+                        <p><strong>Room Type: </strong><t t-out="booking.room_type"/></p>
+                        <p><strong>Check-in Date: </strong><t t-out="booking.check_in_date"/></p>
+                        <p><strong>Check-out Date: </strong><t t-out="booking.check_out_date"/></p>
+                        <p><strong>Status: </strong><t t-out="booking.status"/></p>
+                        <p><strong>Total Price: </strong><t t-out="booking.total_price"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

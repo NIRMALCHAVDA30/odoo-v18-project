@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_archive_old_opportunities_1" model="ir.ui.view">
+        <field name="name">crm.lead.archive.old.unquoted</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+
+                <button type="object" name="archive_old_unquoted_opportunities"
+                    class="btn-primary"
+                    string="Archive 14+ Day Unquoted" />
+
+
+                <button type="object" name="salesperson_with_10_and_more_probability"
+                    class="btn-danger"
+                    string="Salesperson with probability" />
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

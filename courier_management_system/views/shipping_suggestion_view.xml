@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="shipping_suggestion_view_form" model="ir.ui.view">
+        <field name="name">shipping.suggestion.view.form</field>
+        <field name="model">shipping.suggestion</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="booking_id" />
+                        <field name="route_line_id" />
+                        <field name="estimated_days" />
+                        <field name="estimated_cost" />
+                        <field name="suggestion_type" />
+                        <field name="currency_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="shipping_suggestion_view_list" model="ir.ui.view">
+        <field name="name">shipping.suggestion.view.list</field>
+        <field name="model">shipping.suggestion</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="booking_id" optional="hide" />
+                <field name="route_line_id" />
+                <field name="estimated_days" />
+                <field name="estimated_cost" />
+                <field name="suggestion_type" optional="hide" />
+                <field name="currency_id" optional="hide"/>
+
+                <button name="action_choose_route"
+                    string="Choose"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="parent.status in ['confirmed','invoiced','picked','in_transit', 'out_for_delivery','delivered', 'returned']" />
+            </list>
+        </field>
+    </record>
+
+    <record id="shipping_suggestion_action" model="ir.actions.act_window">
+        <field name="name">Shipping Suggestion</field>
+        <field name="res_model">shipping.suggestion</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- <menuitem
+        id="shipping_mode_menu"
+        name="Shipping Modes"
+        action="shipping_mode_action"
+        sequence="3" /> -->
+
+</odoo>
